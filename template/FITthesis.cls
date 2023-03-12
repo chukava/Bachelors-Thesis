@@ -55,6 +55,7 @@
 \RequirePackage{lmodern}[2009/10/30]
 \RequirePackage{graphicx}[2014/10/28]
 
+\RequirePackage{pdfpages} % \includepdf
 
 \RequirePackage{etoolbox}[2017/01/02]
 \AtEndEnvironment{table}{\gdef\there@is@a@table{}}
@@ -507,8 +508,9 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela (vr\'atane komer\v cn\'eho vyu\v
 % fix the memoir bug generating structured numbers (e.g., a figure number) without dot
 \renewcommand{\counterwithin}{\@ifstar{\@csinstar}{\@csin}}
 
-	\thispagestyle{empty}
-	\if\@lang1{Sem vlo{\v z}te zad{\' a}n{\' i} Va{\v s}{\' i} pr{\' a}ce.}\else\if\@lang2{Sem vlo{\v z}te zadanie Va{\v s}ej pr{\' a}ce.}\else{Insert here your thesis' task.}\fi\fi
+	% \thispagestyle{empty}
+	% \if\@lang1{Sem vlo{\v z}te zad{\' a}n{\' i} Va{\v s}{\' i} pr{\' a}ce.}\else\if\@lang2{Sem vlo{\v z}te zadanie Va{\v s}ej pr{\' a}ce.}\else{Insert here your thesis' task.}\fi\fi
+        \includepdf[pages={1}]{pdf/chukava_assignment.pdf}
 
 	\frontmatter
 	\pagestyle{plain}
