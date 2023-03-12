@@ -10,7 +10,7 @@
 % english thesis in English language
 % hidelinks remove colour boxes around hyperlinks
 
-\documentclass[thesis=B,english]{FITthesis}[2019/12/23]
+\documentclass[thesis=B,english]{template/FITthesis}[2019/12/23]
 
 %\usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 % \usepackage[latin2]{inputenc} % LaTeX source encoded as ISO-8859-2
@@ -32,13 +32,13 @@
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 \department{Department of Software Engineering}
-\title{DevOps concepts - CI/CD, implementation of authorization & authentication, presented on a BI-DBS portal frontend}
+\title{DevOps concepts - CI/CD, implementation of authorization \& authentication, presented on a BI-DBS portal frontend}
 \authorGN{Volha} %author's given name/names
 \authorFN{Chukava} %author's surname
 \author{Volha Chukava} %author's name without academic degrees
 \authorWithDegrees{Volha Chukava} %author's name with academic degrees
 \supervisor{Ing. Oldřich Malec}
-\acknowledgements{THANKS (remove entirely in case you do not with to thank anyone)}
+\acknowledgements{\input{tex/acknowledgements.tex}}
 \abstractEN{Summarize the contents and contribution of your work in a few sentences in English language.}
 \abstractCS{V n{\v e}kolika v{\v e}t{\' a}ch shr{\v n}te obsah a p{\v r}{\' i}nos t{\' e}to pr{\' a}ce v {\v c}esk{\' e}m jazyce.}
 \placeForDeclarationOfAuthenticity{Prague}
@@ -55,7 +55,6 @@
 
 \setsecnumdepth{part}
 \chapter{Introduction}
-
 
 
 \setsecnumdepth{all}
