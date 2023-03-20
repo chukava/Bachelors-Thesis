@@ -27,9 +27,6 @@
 % \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
 % \makeglossaries
 
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% EDIT THIS
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 \department{Department of Software Engineering}
 \title{DevOps concepts - CI/CD, implementation of authorization \& authentication, presented on a BI-DBS portal frontend}
@@ -38,12 +35,15 @@
 \author{Volha Chukava} %author's name without academic degrees
 \authorWithDegrees{Volha Chukava} %author's name with academic degrees
 \supervisor{Ing. Oldřich Malec}
-\acknowledgements{\input{tex/acknowledgements.tex}}
-\abstractEN{Summarize the contents and contribution of your work in a few sentences in English language.}
-\abstractCS{V n{\v e}kolika v{\v e}t{\' a}ch shr{\v n}te obsah a p{\v r}{\' i}nos t{\' e}to pr{\' a}ce v {\v c}esk{\' e}m jazyce.}
 \placeForDeclarationOfAuthenticity{Prague}
-\keywordsCS{Replace with comma-separated list of keywords in Czech.}
-\keywordsEN{Replace with comma-separated list of keywords in English.}
+
+\acknowledgements{\input{tex/acknowledgements.tex}}
+\abstractEN{\input{tex/abstractEN}}
+\abstractCS{\input{tex/abstractCS}}
+\keywordsCS{\input{tex/keywordsCS}}
+\keywordsEN{\input{tex/keywordsEN}}
+
+% TODO: choose a right one
 \declarationOfAuthenticityOption{1} %select as appropriate, according to the desired license (integer 1-6)
 % \website{http://site.example/thesis} %optional thesis URL
 
@@ -53,26 +53,31 @@
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 
-\setsecnumdepth{part}
-\chapter{Introduction}
 
+\setsecnumdepth{part}
+\input{tex/0_Introduction}
 
 \setsecnumdepth{all}
-\chapter{State-of-the-art}
 
-\chapter{Analysis and design}
-
-\chapter{Realisation}
+% \input{tex/1_Analysis} % state of app
+% \input{tex/2_DevOps_Concepts}
+% \input{tex/3_Deployment}
+\input{tex/4_Authentication}
+\input{tex/5_Authorization}
+\input{tex/6_Tests}
+\chapter{Realisation}  % add impl separetely
 
 \setsecnumdepth{part}
 \chapter{Conclusion}
+
+
 
 
 \bibliographystyle{iso690}
 \bibliography{mybibliographyfile}
 
 \setsecnumdepth{all}
-\appendix
+% \appendix
 
 \chapter{Acronyms}
 % \printglossaries
@@ -86,17 +91,80 @@
 
 %change appropriately
 
-\begin{figure}
-	\dirtree{%
-		.1 readme.txt\DTcomment{the file with CD contents description}.
-		.1 exe\DTcomment{the directory with executables}.
-		.1 src\DTcomment{the directory of source codes}.
-		.2 wbdcm\DTcomment{implementation sources}.
-		.2 thesis\DTcomment{the directory of \LaTeX{} source codes of the thesis}.
-		.1 text\DTcomment{the thesis text directory}.
-		.2 thesis.pdf\DTcomment{the thesis text in PDF format}.
-		.2 thesis.ps\DTcomment{the thesis text in PS format}.
-	}
-\end{figure}
+% \begin{figure}
+% 	\dirtree{%
+% 		.1 readme.txt\DTcomment{the file with CD contents description}.
+% 		.1 exe\DTcomment{the directory with executables}.
+% 		.1 src\DTcomment{the directory of source codes}.
+% 		.2 wbdcm\DTcomment{implementation sources}.
+% 		.2 thesis\DTcomment{the directory of \LaTeX{} source codes of the thesis}.
+% 		.1 text\DTcomment{the thesis text directory}.
+% 		.2 thesis.pdf\DTcomment{the thesis text in PDF format}.
+% 		.2 thesis.ps\DTcomment{the thesis text in PS format}.
+% 	}
+% \end{figure}
+
+
+
+
+
+
+% Cíle práce
+
+% \chapter{Analýza a návrh}
+
+% % \begin{abstract}
+% %         V této kapitole provedeme analýzu požadavků a návrh včetně zdůvodnění všech rozhodnutí.
+% % \end{abstract}
+
+% \section{Analýza}
+
+% % ``smth'' 
+% % --
+% % -
+
+% Přidáme odstavec Text - zejména ten odborný - je nutné členit na odstavce. Každý odstavec by se měl týkat jednoho tématu, myšlenky... Odstavce od~ sebe~ musí být vizuálně oddělené. K tomu existuje několik vhodných stylů, které si~ popíšeme v jedné z následujících kapitol. Odstavce mohou být různě vysázené. V odborných textech je běžná sazba "do bloku". Při ní je nutné vhodně měnit mezislovní mezery. Jejich doporučená velikost je 0,25 - 0.33 čtverčíku.
+
+% Požadavky jsou těchto typů:
+% \begin{description}
+%     \item[funkční:] objasňují, co se musí udělat a identifikují nutné aktivity;
+%     \item[nefunkční:] jsou všechny, které nejsou funkční. Typicky mezi ně patří: 
+%         \begin{itemize}
+%             \item výkonnostní
+%             \item designové
+%         \end{itemize}
+% \end{description}
+
+
+% \subsection{Funkční požadavky}
+
+% Funkční požadavky této práce jsou:
+% \begin{enumerate}
+%     \item získat zadání
+%     \item sepsat práci
+%     \item včas odevzdat
+%     \item obhájit \footnote{Když se zadaří.}
+% \end{enumerate}
+
+
+% \section{Tabulky}
+
+% V tabulce 3.1 najdete možnosti, jak získat body v předmětu BI-DPR.
+
+
+% \begin{tabular}{ p{3cm}|c|c }
+%      činnost & body & povinná\\
+%      Zpracování a odevzdání zápočtového projektu (rozpracované bakalářské práce) & 30 & ANO\\
+%      test z typografie & 10 & ANO\\
+%      test z citací & 10 & ANO\\
+%      Udělení bodů od vedoucího bakalářské práce & 20 & NE
+% \end{tabular}
+
+
+
+% Logo. Získáno z \url{https://www.cvut.cz/logo-a-graficky-manual}
 
 \end{document}
+
+
+
