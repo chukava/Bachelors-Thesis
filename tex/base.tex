@@ -21,6 +21,13 @@
 % \usepackage{amssymb} %additional math symbols
 
 \usepackage{dirtree} %directory tree visualisation
+\usepackage{biblatex}
+
+
+% \bibliographystyle{iso690}
+
+\bibliography{tex/mybibliographyfile}
+
 
 % % list of acronyms
 % \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
@@ -59,22 +66,23 @@
 
 \setsecnumdepth{all}
 
-% \input{tex/1_Analysis} % state of app
+\input{tex/1_Analysis} 
 % \input{tex/2_DevOps_Concepts}
 % \input{tex/3_Deployment}
-\input{tex/4_Authentication}
-\input{tex/5_Authorization}
+% \input{tex/4_Authentication}
+% \input{tex/5_Authorization}
 \input{tex/6_Tests}
 \chapter{Realisation}  % add impl separetely
+
 
 \setsecnumdepth{part}
 \chapter{Conclusion}
 
 
 
+\nocite{*}
+\printbibliography[title={vfvf}]
 
-\bibliographystyle{iso690}
-\bibliography{mybibliographyfile}
 
 \setsecnumdepth{all}
 % \appendix
@@ -82,12 +90,15 @@
 \chapter{Acronyms}
 % \printglossaries
 \begin{description}
-	\item[GUI] Graphical user interface
-	\item[XML] Extensible markup language
+   \item[MVP] Model View Presenter
+   \item[PHP] Hypertext Preprocessor
+   \item[HTML] HyperText Markup Language
 \end{description}
 
 
 \chapter{Contents of enclosed CD}
+
+
 
 %change appropriately
 

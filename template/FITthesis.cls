@@ -51,7 +51,6 @@
 \RequirePackage{chngcntr}[2008/07/23]
 \counterwithout*{footnote}{chapter}
 
-
 \RequirePackage{lmodern}[2009/10/30]
 \RequirePackage{graphicx}[2014/10/28]
 
