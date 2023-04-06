@@ -4,16 +4,16 @@ In this chapter, I will introduce a web application helping with teaching databa
 I will describe the current and planned state of the application from the perspective of application architecture, design patterns, and used technology stack. The goal is to identify the existing problems of the current application, outline how some of them will be solved in a new portal, as well as indicate what difficulties we can face developing the new application using a new stack of technologies and new architecture.
 
 \section{The BI-DBS portal}
-The BI-DBS portal is a web application used for teaching database systems subject in a bachelor's study program at the Czech Technical University at the Faculty of Information Technology. The portal is complex and has many useful functionalities. It allows managing and tracking all the student's studying progress during the semester, including semester tests, complex semester work, and exams. Besides teachers have an overview of all their student's work in one place.
-The current application was developed as well as a new one being developed by students and teachers in subjects BI-SP1, BI-SP2 subjects, and theses. That is a unique fact about this project. Every half or one year new students get to the application development. They are open to sharing their ideas for improving the application, thus we are designing and implementing a better and better product each year.
+The BI-DBS portal is a web application used for teaching database systems subject in a bachelor's study program at the Czech Technical University at the Faculty of Information Technology. The portal is complex and has many useful functionalities. It allows managing and tracking all the student's studying progress during the semester, including semester tests, complex semester work, and exams. Besides, teachers have an overview of all their student's work in one place.
+The current application was developed, as well as a new one being developed by students and teachers in subjects BI-SP1, BI-SP2 subjects, and theses. That is a unique fact about this project. Every half or one year, new students get to the application development. They are open to sharing their ideas for improving the application. Thus, we are designing and implementing a better and better product each year.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Current state of the application}
-The current BI-DBS portal was deployed for the first time in 2016. Over time it gained new features and grew large. Used technologies became not relevant and it became difficult to maintain it. 
+The current BI-DBS portal was deployed for the first time in 2016. Over time it gained new features and grew large. Used technologies became not relevant, and it became difficult to maintain it. 
 
 \subsection{Architecture}
-The current application was built in a traditional way, using a monolithic architecture approach and following the Model-View-Presenter architectural pattern\cite{potel_mvp}. Figure 1.1 shows the visualization of the acritecture. The application is presented as one monolithic unit, and it is composed  of three components.
+The current application was built in a traditional way, using a monolithic architecture approach and following the Model-View-Presenter architectural pattern\cite{potel_mvp}. Figure 1.1 shows the visualization of the architecture. The application is presented as one monolithic unit, and it is composed  of three components.
 
 \begin{itemize}
   \item The model: Communicates with the database and handles domain and business logic.
@@ -41,13 +41,13 @@ However, we can have those benefits only until the application grows large. Then
 \paragraph*{Doctrine.} "Doctrine ORM is an object-relational mapper for PHP 7.1+ that provides transparent persistence for PHP objects. It sits on top of a powerful database abstraction layer. One of its key features is the option to write database queries in a proprietary object-oriented SQL dialect called Doctrine Query Language."
 
 
-\paragraph*{Nette.} Nette is an open-source framework for creating web applications in PHP. It helps with developing both the client and server sides of the application. The disadvantage of it is the strong dependencies between frontend and backend. That makes it problematic to adjust something on one side without affecting another one.
+\paragraph*{Nette.} Nette is an open-source framework for creating web applications in PHP. It helps with developing both the client and server sides of the application. The disadvantage of it is the strongthe  dependencies  between frontend and backend. That makes it problematic to adjust something on one side without affecting another one.
 
-\paragraph*{Latte.} Nette framework is using a template system Latte. It compiles templates down to the optimal PHP code. 
+\paragraph*{Latte.} Nette framework uses a template system Latte. It compiles templates down to the optimal PHP code. 
 
 \paragraph*{AdminLTE.} AdminLTE is a fully responsive administration template. Based on Bootstrap 4.6 framework and also the JS/jQuery plugin. 
 
-\paragraph*{Webpack.}"At its core, webpack is a static module bundler for modern JavaScript applications. When webpack processes your application, it internally builds a dependency graph from one or more entry points and then combines every module your project needs into one or more bundles, which are static assets to serve your content from."
+\paragraph*{Webpack.}"At its core, Webpack is a static module bundler for modern JavaScript applications. When Webpack processes your application, it internally builds a dependency graph from one or more entry points and then combines every module your project needs into one or more bundles, which are static assets to serve your content from."
 
 
 
@@ -58,12 +58,26 @@ However, we can have those benefits only until the application grows large. Then
 % Latte - https://latte.nette.org/en/
 % Nette - https://nette.org/en/
 % HTML - https://developer.mozilla.org/en-US/docs/Web/HTML
-% php - https://www.php.net/manual/en/intro-whatis.php
+% Php - https://www.php.net/manual/en/intro-whatis.php
 % monolithic - https://www.atlassian.com/microservices/microservices-architecture/microservices-vs-monolith ,
 % https://www.qulix.com/about/monolithic-vs-microservices-architechture/
 
 
 
 \section{Planned state of the application}
-% \subsection{Architecture}
+A New modernized design of the BI-DBS portal was designed by Ing. Andrii Plyskach and described in his master thesis.  
+
+
+\subsection{Architecture}
+Ing. Andrii Plyskach chose that the application needs to be transferred to microservices architecture.
+A microservices architectural pattern is based on the concept of a series of loosely-coupled services. They can be developed using different technologies and deployed independently. 
+
+
+\begin{figure}[hp]
+\centering
+\includegraphics[scale=0.73]{../png/microservices.png}
+\caption{Microservice architecture}\label{picture:mvp}
+\end{figure}
+
+
 % \subsection{Technologies}
