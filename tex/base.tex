@@ -2,7 +2,6 @@
 % arara: xelatex
 % arara: xelatex
 
-
 % options:
 % thesis=B bachelor's thesis
 % thesis=M master's thesis
@@ -10,41 +9,17 @@
 % english thesis in English language
 % hidelinks remove colour boxes around hyperlinks
 
+% uncomment the following to hide all hyperlinks
+% \RequirePackage[pdfpagelayout=TwoPageRight,hidelinks]{hyperref}[2020-05-15]
+
 \documentclass[thesis=B,english]{template/FITthesis}[2019/12/23]
 
-%\usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
-% \usepackage[latin2]{inputenc} % LaTeX source encoded as ISO-8859-2
-% \usepackage[cp1250]{inputenc} % LaTeX source encoded as Windows-1250
-
-% \usepackage{subfig} %subfigures
-% \usepackage{amsmath} %advanced maths
-% \usepackage{amssymb} %additional math symbols
-
 \usepackage{dirtree} %directory tree visualisation
-\usepackage{biblatex}
+\usepackage[style=iso-numeric]{biblatex}
+\addbibresource{tex/mybibliographyfile.bib}
 
 
-
-% \bibliographystyle{iso690}
-
-\bibliography{tex/mybibliographyfile}
-
-
-% % list of acronyms
-% \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
-% \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
-% \makeglossaries
-
-
-\department{Department of Software Engineering}
-\title{DevOps concepts - CI/CD, implementation of authorization \& authentication, presented on a BI-DBS portal frontend}
-\authorGN{Volha} %author's given name/names
-\authorFN{Chukava} %author's surname
-\author{Volha Chukava} %author's name without academic degrees
-\authorWithDegrees{Volha Chukava} %author's name with academic degrees
-\supervisor{Ing. Oldřich Malec}
-\placeForDeclarationOfAuthenticity{Prague}
-
+\input{meta.tex}
 \acknowledgements{\input{tex/acknowledgements.tex}}
 \abstractEN{\input{tex/abstractEN}}
 \abstractCS{\input{tex/abstractCS}}
@@ -58,63 +33,22 @@
 
 \begin{document}
 
-% \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
-% \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
-
-
 \setsecnumdepth{part}
 \input{tex/0_Introduction}
 
 \setsecnumdepth{all}
-
 \input{tex/1_Analysis} 
 % \input{tex/2_DevOps_Concepts}
-% \input{tex/3_Deployment}
-% \input{tex/4_Authentication}
-% \input{tex/5_Authorization}
-% \input{tex/6_Tests}
-% \chapter{Realisation}  % add impl separetely
+% \input{tex/3_Authentication_&_Autorization}
 
-\chapter{Conclusion}
+
 \setsecnumdepth{part}
-
-
-
-\nocite{*}
-\printbibliography[title={Bibliography}]
-
+\input{tex/conclusion}
+\printbibliography
 
 \setsecnumdepth{all}
-% \appendix
-
-\chapter{Acronyms}
-% \printglossaries
-\begin{description}
-   \item[MVP] Model View Presenter
-   \item[PHP] Hypertext Preprocessor
-   \item[HTML] HyperText Markup Language
-\end{description}
-
-
-\chapter{Contents of enclosed CD}
-
-
-
-%change appropriately
-
-% \begin{figure}
-% 	\dirtree{%
-% 		.1 readme.txt\DTcomment{the file with CD contents description}.
-% 		.1 exe\DTcomment{the directory with executables}.
-% 		.1 src\DTcomment{the directory of source codes}.
-% 		.2 wbdcm\DTcomment{implementation sources}.
-% 		.2 thesis\DTcomment{the directory of \LaTeX{} source codes of the thesis}.
-% 		.1 text\DTcomment{the thesis text directory}.
-% 		.2 thesis.pdf\DTcomment{the thesis text in PDF format}.
-% 		.2 thesis.ps\DTcomment{the thesis text in PS format}.
-% 	}
-% \end{figure}
-
-
+\appendix
+\input{tex/acronyms}
+\input{tex/contents_of_enclosed_CD}
 
 \end{document}
