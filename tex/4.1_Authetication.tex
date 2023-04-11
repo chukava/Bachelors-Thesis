@@ -1,0 +1,34 @@
+\section{Authentication} Authentication is a process of identification and verification of the user's access to the application. The authentication microservice was designed and described along with the general communication flow for this service by Ing. Andrii Plyskach in his master thesis\cite{mt-plyskach}. I will design and implement authorization for a client-side using endpoints of that microservice. 
+
+
+\subsection{OAuth protocol}
+The authorization microservice is designed using OAuth protocol. This is a modern industry-standard protocol for authorization. The concept of that protocol is granting access to a user without a need for a user to share their credentials with an application they want to access.
+
+ 
+ \subsection{Authentication flow}
+ An unauthenticated user trying to access the application is always redirected to a login page where a user will provide an authorization server with credentials by filling in a login form and submitting it. If authorization by the authorization server were successful, the authorization server will do redirect to a URL with a code. From that moment frontend does not communicate with an authorization service untill refresh token is expired.
+
+
+
+Example: HTTP......
+
+that can be later exchanged for an authorization token. 
+
+
+
+
+
+description of what data we get from the BE
+% {
+% access_token,
+% refresh_token
+% }
+
+\subsection{Access token}
+The access token is a short-time living token that is used to verify the user's access to the application on both frontend and backend sides. An access token is sent in every request sent to backend, so backend can verify if the token is valid and only then complete a request.
+
+\paragraph*{JWT token}
+
+\subsection{Refresh token}
+The refresh token is meant to be a long-time living token. Because it is supposed to have a longer expiration time to be able to refresh an access token.
+However, our microservice supports refresh token rotation, which means that every time we refresh the access token we also get a new refresh token, which makes its time living much shorter and thus more secure. There are different opinions about what is the best and most secure way of storing this token. [OAuth] pages say that with use of token rotation using local storage is possible

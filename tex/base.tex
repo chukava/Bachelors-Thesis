@@ -15,8 +15,9 @@
 \documentclass[thesis=B,english]{template/FITthesis}[2019/12/23]
 
 \usepackage{dirtree} %directory tree visualisation
+\usepackage{csquotes} %quoted texts are typeset according to the rules of your main language
 \usepackage[style=iso-numeric]{biblatex}
-\addbibresource{tex/mybibliographyfile.bib}
+\addbibresource{tex/sources.bib}
 
 
 \input{meta.tex}
@@ -37,14 +38,16 @@
 \input{tex/0_Introduction}
 
 \setsecnumdepth{all}
-\input{tex/1_Analysis} 
-% \input{tex/2_DevOps_Concepts}
-% \input{tex/3_Authentication_&_Autorization}
+\input{tex/1_Analysis_of_the_apllication_state}
+\input{tex/2_Analysis_of_DevOps_Concepts}
+\input{tex/3_Design_and_analysis_of_access_managment}
+\input{tex/4_Implementation}
+\input{tex/5_Tests_and_Deployment}
 
 
 \setsecnumdepth{part}
 \input{tex/conclusion}
-\printbibliography
+\printbibliography[title=Sources]
 
 \setsecnumdepth{all}
 \appendix
