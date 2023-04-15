@@ -37,14 +37,15 @@ Frontend and backend dependencies are strengthened, indicating that they are a s
 
 \paragraph*{Latte.} Nette framework uses a template system Latte. It compiles templates down to the optimal PHP code.\cite{latte-doc}
 
-\paragraph*{AdminLTE.} AdminLTE is a fully responsive administration template. Based on Bootstrap 4.6 framework and also the JS/jQuery plugin\cite{adminlte-doc}. 
+\paragraph*{AdminLTE.} AdminLTE is a fully responsive administration template. Based on Bootstrap 4.6 framework and also the JS/jQuery plugin.\cite{adminlte-doc} 
 
 \paragraph*{Vue 2.} Vue.js is a javascript framework for building user interfaces and single-page applications.\\
-Most of the frontend is implemented using Latte templates and AdminLTE bootstrap. However, in order to reduce dependencies between the frontend and the backend, and also modernize it, few components were refactored to the Vue.js version 2. The logic is defined using the Options API. It is traditional object-oriented way, and up until Vue 2 it was the only way to create components in Vue\cite{vue2-doc}\cite{apivue-dzakelsek}.
+Most of the frontend is implemented using Latte templates and AdminLTE bootstrap. However, in order to reduce dependencies between the frontend and the backend, and also modernize it, few components were refactored to the Vue.js version 2. The logic is defined using the Options API. It is traditional object-oriented way, and up until Vue 2 it was the only way to create components in Vue.\cite{vue2-doc, apivue-dzakelsek}
 
-\paragraph*{Javascript.} JavaScript is high-level programming language used for defining the behavior of webpages. It is a dynamically-typed scripting language that enables you to control multimedia, animate graphics, and generate dynamically changing content\cite{js-doc}.\\ 
+\paragraph*{Javascript.} JavaScript is high-level programming language used for defining the behavior of webpages. It is a dynamically-typed scripting language that enables you to control multimedia, animate graphics, and generate dynamically changing content.\cite{js-doc}\\ 
 In the current BI-DBS portal it is used for defining logic on the frontend. Dynamically-typed languages are easy for development, but this feature reduces the code's readability, requires more testing and are prone to run-time errors. Large applications like BI-DBS are likely to experience problems as a result of its drawbacks because it is better suited for smaller applications with simple logic.
 
-\paragraph*{Webpack.} Primarily webpack is a static module bundler for modern JavaScript programs. When webpack processes your application, it internally creates a dependency tree from one or more entry points and then merges every module your project requires into one or more bundles.\cite{webpack-doc}
+\paragraph*{Webpack.} Primarily webpack is a static module bundler for modern JavaScript programs. When webpack processes your application, it internally creates a dependency tree from one or more entry points and then merges every module your project requires into one or more bundles.\cite{webpack-doc}\\
+Webpack is used in a current application for bundling a few modernized frontend components implemented in Vue.js and javascript.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

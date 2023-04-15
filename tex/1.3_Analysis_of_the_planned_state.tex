@@ -25,7 +25,7 @@ Microservices architectural pattern\cite{architecture-haris} is based on the con
 \begin{itemize}
   \item \emph{Difficult debugging and testing:} Each service needs to be first tested separately and only then as one unit. Besides it is more difficult to track down errors.
 
-  \item \emph{DevOps required:} To benefit from the fast deployment it should be configured and maintained. It requires the knowledge of development operations.
+  \item \emph{DevOps required:} To benefit from the fast deployment it should be configured and maintained. It requires knowledge of development operations.
 
   \item \emph{Longer development time and limited reuse of code:} Microservices need to be managed separately, therefore it requires more time.
 \end{itemize}
@@ -50,12 +50,16 @@ Microservices architectural pattern\cite{architecture-haris} is based on the con
 
    \item \emph{Increased rendering performance.}
 
+    \item \emph{Smaller Vue core.}
+
+
 \end{itemize}
 
 \paragraph*{Typescript} Typescript is based on JavaScript which is dynamically typed. TypeScript has an additional syntax that makes it statically typed. That has advantages in catching errors during development. It also gives a code more structure and makes it predictable. Typescript is more suitable for big applications than JavaScript. For our project, it is crucial to write code that will be easy to read.\cite{typescript-doc}
 
 \paragraph*{Quasar} Quasar is a web framework based on Vue.js. It provides us with ready-to-use components which are customizable and easy-extendable. Moreover, it makes the application less vulnerable to XSS attacks due to its escaping feature. When using Quasar, developers do not need deep knowledge of CSS and scripting languages to build a good-looking  and responsive application. Besides, it is suitable for developing single-page applications(SPA).\cite{quasar-doc}
 
-\paragraph*{Pinia} Pinia is a Vue.js storage library and state management framework. It is mainly designed for the development of front-end web applications, and it uses declarative syntax as well as its own state management API.\cite{pinia-wiki}
+\paragraph*{Pinia} Pinia is a Vue.js storage library and state management framework. It is mainly designed for the development of front-end web applications, and it uses declarative syntax as well as its own state management API.
+It allows to share a state across components and pages securely. Moreover, it has server-side rendering support. With Pinia plugins we can also persist the state across page reloading using local or session storage.\cite{pinia-wiki}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
