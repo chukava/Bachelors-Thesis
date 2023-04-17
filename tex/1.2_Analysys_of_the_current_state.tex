@@ -1,5 +1,5 @@
 \section{Current state of the application}
-The current BI-DBS portal was deployed for the first time in 2016\cite{bt-malec}. Over time it gained new features and grew large, currently, it has a total of around 120000-140000 lines of code\cite{mt-plyskach}. Used technologies became less relevant and it became difficult to maintain it.
+The current BI-DBS portal was deployed for the first time in 2016\cite{bt-malec}. Over time it gained new features and grew large. Currently, it has a total of around 120000-140000 lines of code\cite{mt-plyskach}. Used technologies became less relevant and it became difficult to maintain it.
 
 \subsection{Architecture}
 The current application was built in a traditional way, using a monolithic architecture approach and following the Model-View-Presenter architectural pattern\cite{mvp-potel}\cite{architecture-haris}. Figure 1.1 shows the visualization of the architecture. The application is presented as one monolithic unit, and it is composed  of three components. 
@@ -19,7 +19,7 @@ The current application was built in a traditional way, using a monolithic archi
 \noindent This architecture's main concept is having one code base that benefits in\newline simplifying development, testing, debugging, and deployment.\\
 However, we can have those benefits only until the application grows large. Then all those processes get slower, more complex, and become problematic. In addition, with a lack of flexibility and scalability, it becomes challenging to maintain the application and keep it secure.\\
 
-\noindent The BI-DBS portal is being developed by students. Students generally do not have much experience developing large applications and dealing with complex dependencies. Besides, they have limited time to progress in learning and then designing and developing the portal. Therefore it takes a lot of time for students to learn before contributing to the project. Thus it is more problematic for students to benefit from learning and for maintainers to keep it functioning properly.
+\noindent The BI-DBS portal is being developed by students. Students generally do not have much experience developing large applications and dealing with complex dependencies. Besides, they have limited time to progress in learning and then designing and developing the portal. Therefore it takes a lot of time for students to learn before contributing to the project. Thus it is more problematic for students to benefit from learning and for maintainers to keep it functioning correctly.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,19 +33,19 @@ Using his approach leads to creating dependencies between the user interface and
 This framework did not cause problems during the development process and has no significant disadvantages for the correct operation of the BI-DBS.
 
 \paragraph*{Nette.} Nette is an open-source framework for creating web applications in PHP. It helps with developing both the client and server sides of the application and also reduces security vulnerabilities. Moreover, it manages application states using sessions and routing.\cite{nette-doc}\\ 
-Frontend and backend dependencies are strengthened, indicating that they are a single unit. The fact that the they are so strongly dependent is a drawback. Because of this, it is difficult to make changes to one side without having an impact on the other. 
+Frontend and backend dependencies are strengthened, indicating that they are a single unit. The fact that they are so strongly dependent is a drawback. Because of this, it is difficult to make changes to one side without having an impact on the other. 
 
-\paragraph*{Latte.} Nette framework uses a template system Latte. It compiles templates down to the optimal PHP code.\cite{latte-doc}
+\paragraph*{Latte.} Nette framework uses a template system called Latte. It compiles templates down to the optimal PHP code.\cite{latte-doc}
 
 \paragraph*{AdminLTE.} AdminLTE is a fully responsive administration template. Based on Bootstrap 4.6 framework and also the JS/jQuery plugin.\cite{adminlte-doc} 
 
 \paragraph*{Vue 2.} Vue.js is a javascript framework for building user interfaces and single-page applications.\\
-Most of the frontend is implemented using Latte templates and AdminLTE bootstrap. However, in order to reduce dependencies between the frontend and the backend, and also modernize it, few components were refactored to the Vue.js version 2. The logic is defined using the Options API. It is traditional object-oriented way, and up until Vue 2 it was the only way to create components in Vue.\cite{vue2-doc, apivue-dzakelsek}
+Most of the frontend is implemented using Latte templates and AdminLTE bootstrap. However, in order to reduce dependencies between the frontend and the backend and also modernize it, a few components were refactored to the Vue.js version 2. The logic is defined using the Options API. It is a traditional object-oriented way, and up until Vue 2 it was the only way to create components in Vue.\cite{vue2-doc, apivue-dzakelsek}
 
-\paragraph*{Javascript.} JavaScript is high-level programming language used for defining the behavior of webpages. It is a dynamically-typed scripting language that enables you to control multimedia, animate graphics, and generate dynamically changing content.\cite{js-doc}\\ 
+\paragraph*{Javascript.} JavaScript is a high-level programming language used for defining the behavior of webpages. It is a dynamically-typed scripting language that lets you control multimedia, animate graphics, and generate dynamically changing content.\cite{js-doc}\\ 
 In the current BI-DBS portal it is used for defining logic on the frontend. Dynamically-typed languages are easy for development, but this feature reduces the code's readability, requires more testing and are prone to run-time errors. Large applications like BI-DBS are likely to experience problems as a result of its drawbacks because it is better suited for smaller applications with simple logic.
 
-\paragraph*{Webpack.} Primarily webpack is a static module bundler for modern JavaScript programs. When webpack processes your application, it internally creates a dependency tree from one or more entry points and then merges every module your project requires into one or more bundles.\cite{webpack-doc}\\
+\paragraph*{Webpack.} Primarily, Webpack is a static module bundler for modern JavaScript programs. When Webpack processes your application, it internally creates a dependency tree from one or more entry points and then merges every module your project requires into one or more bundles.\cite{webpack-doc}\\
 Webpack is used in a current application for bundling a few modernized frontend components implemented in Vue.js and javascript.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
