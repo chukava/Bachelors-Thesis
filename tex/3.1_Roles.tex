@@ -1,6 +1,9 @@
-\section{Roles} The BI-DBS portal receives information about an authorized user from the study information system(KOS) based on the course information. The course information contains the identifier of the semester and the type of study program. Generally, there are eight user roles that are defined by the KOS for subjects and courses.\\
+\section{Roles} 
 
-\noindent \textbf{KOS roles for subjects and their general description:}
+\subsection{KOS roles}
+The BI-DBS portal receives information about an authorized user from the study information system(KOS) based on the course information. The course information contains the identifier of the semester and the type of study program. Generally, there are eight user roles that are defined by the KOS for subjects and courses.\cite{kosapi}\\
+
+\noindent \textbf{KOS roles for subjects and their general description:\cite{usermapapi}}
 
 \begin{itemize}
     \item \emph{Guarantor.} Guarantor is a course administrator. Thus a person with this role typically has all permissions across all course management.
@@ -12,8 +15,6 @@
     \item \emph{Teacher.} The teacher is a general role for a person, who does teaching in the course. 
     \item \emph{Student.} It is a base role for students, that usually grants basic permissions to a user like access to their personal information, study program information and its resources, and also allows managing their projects and submitting assignments.
 \end{itemize}
-
-% % https://kosapi.fit.cvut.cz/projects/kosapi/wiki/Course
 
 
 \noindent Two of those roles are not used for the BI-DBS portal. The first of them is the laboratory instructor, as the BI-DBS subject study program does not include laboratory exercises. The second one is the editor, the BI-DBS portal does not provide functionalities for changing the information about the subject. Therefore, we have a total of six roles used for permissions control in the current application.\\  
@@ -28,16 +29,35 @@ From these six roles in fact. Based on the feedback from the teachers and develo
 \end{enumerate}
 
 \noindent I am offering the simplification, which is based on grouping teaching roles that do not have significant permissions differences such as lecturer, examiner, instructor and teacher into one role. As I have already mentioned above, all the analyses are usually built on three roles where these 4 roles are taken as one role - teacher role, then there is a student and guarantor roles left which makes it a total of three.\\
-After researching the functionalities and permissions structure of the current project and discussing the possible change with developers and managers, I came to the conclusion that it is absolutely safe to generalize the permissions for those four teacher roles. As the result, I got a new clear roles hierarchy, which is visualized in Figure 3.1.
+After researching the functionalities and permissions structure of the current project and discussing the possible change with developers and managers, I came to the conclusion that it is absolutely safe to generalize the permissions for those four teacher roles. As the result, I got a new clear KOS roles structure, which is visualized in Figure 3.1.
 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.57]{../png/role.png}
-\caption{Roles hierarchy}\label{picture:roles}
+\includegraphics[scale=0.52]{../png/kos_roles.png}
+\caption{KOS roles}\label{picture:kos_roles}
 \end{figure}
 
 
-\noindent Explaining the reason why the roles system must be hierarchical, I would start with 
+\subsection{Other roles}
 
-% Beginning with a student role, which is the lowest layer I would like to explain why the roles must be hierarchical must be  All instructors, lectors, examiners, and also guarantors need to have an overview of how the whole application works including the students' side to be able to explain how to work with the portal, as well as they can use it for teaching. Therefore all the roles should have permission to access students .
+\noindent However, the user roles defined by KOS are not fulfilling all the requirements for the application. There are some special cases that require additional roles such as:
+
+\begin{itemize}
+    \item \emph{Impersonation as a student.} For the purpose of demonstrating the process of creating a semestral work and its management, teachers need to have a functionality that will allow them to authorize as a student to show the whole process from the students' side. This feature requires creating a test student, which is identical to a usual student but needs  to differ from the usual KOS student role to exclude such students from counting the statistics. 
+    \item \emph{Development and testing.} For the development and testing processes there is a need to have a test admin user, which will have an access to all functionalities. 
+\end{itemize}
+
+\noindent For these requirements there were created two corresponding special roles:
+
+\begin{itemize}
+    \item \emph{Test student.} Identical to KOS student role from the perspective of permissions.
+    \item \emph{Root.} Role with access to all functionalities.
+\end{itemize}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.56]{../png/roles.png}
+\caption{Other roles}\label{picture:special_roles}
+\end{figure}

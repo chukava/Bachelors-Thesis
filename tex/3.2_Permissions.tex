@@ -1,13 +1,91 @@
-% \section{Permissions} modules and permissions... example of 
-%  diagram of 
+\section{Permissions} The BI-DBS portal functionalities are divided into several modules.
 
+\begin{itemize}
+    \item \emph{Administration.} The administration module provides functionalities for semester configurations. 
+    \item \emph{Semester work.} The semester work module contains all the features for managing the semester work from its creation to evaluation.
+    \item \emph{Tests.} All components for the management of demo, semester and exam tests are placed in the tests module.
+    \item \emph{Connections.} The module which provides the configuration of the database connection is the connections module.
+    \item \emph{Students' score.} Users of the application can see the results of the student's performance during the semester in the student's score module.
+    \item \emph{Users.} Users module provides an overview of the users of the portal.
+    \item \emph{Data modeler.} Data modeler is a playground for drawing conceptual schemas.
+    \item \emph{Transformation modeler.} Transformation modeler is an extension of the data modeler, which also provides the generation of create a script based on the drawn schema.
+    \item \emph{Home.} The home page is composed of the overview of the semester.
+    \item \emph{Authorization.} The authorization module provides login and logout features.
 
-% modules
-% \begin{itemize}
-%     \item Administration
-%     \item Semester Work
-%     \item Tests
-%     \item Connections
-%     \item Students score
-%     \item Users
-% \end{itemize}
+\end{itemize}
+
+\vspace{0.4cm}
+
+\noindent \textbf{These modules can be defined into three groups:}
+
+\begin{enumerate}
+    \item Modules with the same permissions for all roles: transformation modeler, data modeler, connections, authorization.
+    \item Modules available only for a certain role: administration, users.
+    \item Modules available for all the roles but with different permissions for their components: semester work, tests, students' score, home.
+\end{enumerate}
+
+\noindent The first group does not need to be provided with an access management structure as all the modules from the group are available for any authorized user with any of the roles described in the previous section. Therefore the access validation to these modules and their components is simple and clear.\\
+The modules from the second group are available only for two roles: guarantor and root.\\
+Finally, the last group of modules has a more complex access management structure. These modules mostly have two types of components. The first type is components accessible for student, test student and root roles and the second type is accessible for teacher, guarantor and root roles. Therefore in the short description of the module's permissions by roles, I will use only two roles, student for the first type and teacher for the second type.
+
+\paragraph*{Semester work}
+\begin{itemize}
+    \item \emph{Permissions for student.} 
+        \begin{itemize}
+            \item Semester work editor
+            \item Check and submission
+            \item Classification requirements
+        \end{itemize}
+    \item \emph{Permissions for teacher.}
+        \begin{itemize}
+            \item Submitted semester works and submission status view
+            \item Semester works evaluation
+            \item Import and set deadlines
+            \item Classification requirements
+        \end{itemize}
+\end{itemize}
+
+\paragraph*{Tests} 
+\begin{itemize}
+    \item \emph{Permissions for student.}
+    \begin{itemize}
+        \item Taking demo tests
+        \item Taking assigned tests
+    \end{itemize}
+    \item \emph{Permissions for teacher.}
+    \begin{itemize}
+        \item Create and edit assignments
+        \item Create and edit questions
+        \item Create test templates
+        \item Assign and start tests
+        \item Evaluate tests
+        \item Tests classification and statistics
+    \end{itemize}
+\end{itemize}
+
+\paragraph*{Students' score}
+\begin{itemize}
+    \item \emph{Permissions for student.}
+    \begin{itemize}
+        \item View students' score with anonymized personal data
+    \end{itemize}
+    \item \emph{Permissions for teacher.}
+    \begin{itemize}
+        \item View students' score
+    \end{itemize}
+\end{itemize}
+
+\paragraph*{Home}
+\begin{itemize}
+    \item \emph{Permissions for student.} 
+        \begin{itemize}
+        \item View of personal and course data
+        \item View of personal progress in a course
+    \end{itemize}
+    \item \emph{Permissions for teacher.}
+        \begin{itemize}
+        \item View of the course statistics of students progress and activity
+    \end{itemize}
+\end{itemize}
+
+\noindent The detailed accesses to the components and functionalities of the BI-DBS portal are going to be presented by the use case diagrams by students, who will be implementing them. An example of such work is Radoslav Hašeks's master thesis\cite{mt-hasek} which focuses on analyses, designing and implementation of the tests module.
