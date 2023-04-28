@@ -1,43 +1,24 @@
 \chapter{Implementation}
-Authentication is a process of identification and verification of the user's access to the application. Authorization is a process of granting or denying access to the application based on the authorized user's identity and the permissions for that identity. In this chapter, I will describe the implementation of those two processes for the client side with the use of role-based access control, described in the third chapter.\\
-My implementation uses the authentication microservice that was designed and described along with the general communication flow for this service by Ing. Andrii Plyskach in his master thesis\cite{mt-plyskach}. For the purpose of reducing security vulnerabilities, I will describe a few adjustments to the functionalities of that microservice.
-
-
-
-% Authentication and authorization
-
-% Used technologies - Router, Pinia, Cookies
-
-% OAuth protocol
-
-% Flow, offered by Andrii and adjusted by me for 
-
-% Tokens, JWT-Access, Refresh
-
-% Tokens storage and security, cookies
-
-% Example of validation accesses based on roles
-
-
-
-
-
-
-% {Design and implementation of Authentication \& Authorization}
-
-% The BI-DBS portal transfers to microservices architecture and gets \\  
-%  modernized. In order to keep the application secure, a new identity and access management must be designed. In this chapter, I will describe the design for implementation of Authorization and Authorization, including the user roles and permissions management.
+Authentication is a process of identification and verification of the user's access to the application. Authorization is a process of granting or denying access to the application based on the authorized user's identity and the permissions for that identity. In this chapter, I will describe the implementation of those two processes for the client side along with the role-based access control, described in the third chapter.\\
+My implementation uses the authentication microservice that was designed and described along with the general authorization flow for this service by Ing. Andrii Plyskach in his master thesis\cite{mt-plyskach}. For the purpose of reducing security vulnerabilities, I will also describe a few adjustments to the functionalities of that microservice.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{tex/4.1_Authetication}
+\input{tex/4.1_Used_software}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\input{tex/4.2_Authetication_and_authorization}
 
-% \section{Authorization}\label{sec:authorization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\input{tex/4.3_Security}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{tex/4.4_Role-based_access}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
