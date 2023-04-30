@@ -40,7 +40,20 @@ I have come to the solution of storing the refresh token, which is the most sens
 
 % https://www.invicti.com/learn/cookie-security-flags/
 
-\paragraph*{Solution for the access token.} 
+\paragraph*{Solution for the access token.} The access token is represented as JWT token, it contains the important information about the expiration time of the token and user's identity. It cannot be stored in the same way as refresh token as a client needs to have an access to that token directly.\\
+Another way of storing the sensetive data which is considered more secure then local and session storages and cookies is storing it in memory(in a variable). This ways is considered more secure, because it is more prone to XSS attacks. The disadvantage of that method is that it doesn't provide the persistence, but in a case with access token it is a resolvable challenge.\\
+First of all I have decided to store the access token and parsed information about user in the Pinia store, which is more secure then global variables. This store is shown in Figure 4.6.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.52]{../png/pinia_user.png}
+\caption{Cookies setting}
+\end{figure}
+
+\noindent Pinia store is flexible and easy to use, that is an important moment because the stored information is used very often for sending requests, access control on the frontend and other.\\
+Pinia storage does not provide data persistence on its own, but with a use of plugins it can enable this functionality with a use of local or session storage. Surely it is not suitable for the implementaion as I am trying to use as most secure ways to store dat as it is possible. Therefore the users data will be lost together with an access token after the page reload.\\
+The BI-DBS is SPA application, meaning that page reloads are not a part of the usual functioning of the web page. However, for the case when a user does the page reload and store resets to the default values I have implemented the silent sign in. Silent sign in is shortened way of authentication and authorization process described in 4.2.5. User does not participate in this process, client just quickly gets the access token as the authorization server already knows the user and does not require to provide the credentials before the access token expires. 
 
 \subsection{Communication with the backend and CORS}
 Cross-Origin Resource Sharing(CORS) is a security mef
