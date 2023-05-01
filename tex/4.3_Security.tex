@@ -20,13 +20,23 @@
 \end{itemize}
 
 \subsubsection*{Solution for the refresh token.} The perfect solution for storing sensitive data in a browser does not exist and in order to keep the data secure there should be also implemented other vulnerability-reducing features like input data validation, escaping and others. However, with the proper use of security attributes, cookies are much more likely to mitigate those attacks. Moreover, using cookies for storing tokens is recommended by the OWASP community due to their secure configuration options. \\
-I have come to the solution of storing the refresh token, which is the most sensitive token requiring persistence across page reloads, in httpOnly cookies. HttpOnly cookies must be set on the server side as they are not accessible for JavaSccirpt. Therefore, I had to adjust the implementation of sending and receiving the refresh token in the authentication microservice from the body of requests to cookies. Figure 4.5 shows the configuration of security attributes for the refresh token cookie.\\
+I have come to the solution of storing the refresh token, which is the most sensitive token requiring persistence across page reloads, in httpOnly cookies. HttpOnly cookies must be set on the server side as they are not accessible for JavaSccirpt. Therefore, I had to adjust the implementation of sending and receiving the refresh token in the authentication microservice from the body of requests to cookies. Figure 4.5 shows the configuration of security attributes for the refresh token cookie.
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.6]{../png/cookies.png}
-\caption{Cookies setting}
-\end{figure}
+\begin{lstlisting}[language=PHP, caption=Cookies setting]
+public function setRefreshTokenCookie(View $view, JWTToken $token): View
+{
+    $cookie = new Cookie(
+        name: 'refresh_token',
+        value: $token->getRefreshedToken(),
+        path: '/refresh-token',
+        secure: true,
+        httpOnly: true,
+        sameSite: 'Strict'
+    );
+    $view->getResponse()->headers->setCookie($cookie);
+    return $view;
+}
+\end{lstlisting}
 
 \noindent \textbf{Security attributes:}
 
@@ -45,11 +55,32 @@ Another way of storing the sensetive data which is considered more secure then l
 First of all I have decided to store the access token and parsed information about user in the Pinia store, which is more secure then global variables.
 %This store is shown in Figure 4.6.\\!!!
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.52]{../png/pinia_user.png}
-\caption{Cookies setting}
-\end{figure}
+\begin{lstlisting}[language=Octave, caption=Cookies setting]
+export const useUserStore = defineStore('auth', {
+    state: () => ({
+        isLoggedIn: false,
+        user: emptyUser,
+        token: '',
+        previousPage: '/'
+    }),
+    actions: {
+        login(user: User, token: string) {
+            this.isLoggedIn = true
+            this.user = user
+            this.token = token
+        },
+        logout() {
+            this.isLoggedIn = false
+            this.user = emptyUser
+            this.token = ''
+        },
+        setPreviousPage(page: string) {
+            this.previousPage = page
+        }
+    }
+})
+\end{lstlisting}
+
 
 \noindent Pinia store is flexible and easy to use, that is an important moment because the stored information is used very often for sending requests, access control on the frontend and others.\\
 Pinia storage does not provide data persistence on its own, but with the use of plugins it can enable this functionality with the use of local or session storage. Surely it is not suitable for the implementation as I am trying to use as most secure ways to store dat as it is possible. Therefore the users data will be lost together with an access token after the page reloads.\\
@@ -67,10 +98,17 @@ The BI-DBS is SPA application, meaning that page reloads are not a part of the u
 
 \paragraph*{Base configuration} For the base configuration of headers on the client side I have sent an accepted content type to application/json which can automatically be serialized and parsed to objects by Axios. The next header I have configured is the authorization header to contain the access bearer token. It is necessary for getting the data from a backend when it comes to different microservices from the authorization one. Other microservices require authentication and need to be provided with the access token in every request to validate the user and their access for making that request, which is implemented for security reasons. Header configuration is visualized in Figure 4.7.
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.53]{../png/headers_base.png}
-\caption{Axios base configuration}
-\end{figure}
+\begin{lstlisting}[language=Octave, caption=Cookies setting]
+const BASE_URL = import.meta.env.VITE_BASE_URL
+export const axiosClient = axios.create({ baseURL: BASE_URL })
 
-
+axiosClient.interceptors.request.use((config) => {
+    return verifyAccess().then((token) => {
+            config.headers.Authorization = 'Bearer ' + token
+            config.headers.Accept = 'application/json'
+            return config
+        })
+}, (error) => {
+    return Promise.reject(error)
+})
+\end{lstlisting}

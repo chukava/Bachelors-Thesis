@@ -534,6 +534,14 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela (vr\'atane komer\v cn\'eho vyu\v
 	\cleardoublepage
 	\listoftablescond
 
+    \newpage 
+
+    \ % The empty page
+
+    \newpage
+    \renewcommand\lstlistlistingname{List of Code Examples}
+    \lstlistoflistings
+
 	\pagestyle{ruled}
 	\mainmatter
 }
