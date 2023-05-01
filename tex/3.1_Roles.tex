@@ -1,7 +1,8 @@
-\section{Roles} 
+\section{Roles} The role itself is a collection of permissions. To decide what roles the application needs and what permissions those roles would have we have to start by analyzing the users of the application and their needs. My analysis will be based on the existing roles and access control system.\\
+Since the best practice is to assign as few roles to one user as it is possible to avoid creating an excessively complex management system I will aim for simplification of the current access control system. In this section I will describe the roles of the current BI-DBS portal and offer a simplification for the new application, which I will use for my implementation of role-based access control described in section 4.3.
 
 \subsection{KOS roles}
-The BI-DBS portal receives information about an authorized user from the study information system(KOS) based on the course information. The course information contains the identifier of the semester and the type of study program. Generally, there are eight user roles that are defined by the KOS for subjects and courses.\cite{kosapi}\\
+The BI-DBS portal receives information about an authorized user from the study information system(KOS) based on the course information. The course information contains the identifier of the semester and the type of study program. Generally, there are seven user roles that are defined by the KOS for subjects and courses.\cite{kosapi}\\
 
 \noindent \textbf{KOS roles for subjects and their general description:\cite{usermapapi}}
 
@@ -11,13 +12,12 @@ The BI-DBS portal receives information about an authorized user from the study i
     \item \emph{Editor.} Editor is a person who can edit the information about the subject. This role would provide an access to subject information management.
     \item \emph{Lecturer.} Lecturer role indicates that an individual with this role would need to be provided with access to manage course content including lectures, assignments and other study materials.
     \item \emph{Instructor.} Instructor is the role for teachers of exercises parallels. This role implies that a user needs permission to manage exercise materials and also estimate students' tests, semester works and other assignments.
-    \item \emph{Laboratory instructor.} Laboratory instructor is an instructor who does teaching in the laboratories, which means that they may need to be provided with additional access to hardware and software management of the laboratory.
     \item \emph{Teacher.} The teacher is a general role for a person, who does teaching in the course. 
     \item \emph{Student.} It is a base role for students, that usually grants basic permissions to a user like access to their personal information, study program information and its resources, and also allows managing their projects and submitting assignments.
 \end{itemize}
 
 
-\noindent Two of those roles are not used for the BI-DBS portal. The first of them is the laboratory instructor, as the BI-DBS subject study program does not include laboratory exercises. The second one is the editor, the BI-DBS portal does not provide functionalities for changing the information about the subject. Therefore, we have a total of six roles used for permissions control in the current application.\\  
+\noindent One of those roles is not used for the BI-DBS portal. It is the editor role, the BI-DBS portal does not provide functionalities for changing the information about the subject. Therefore, we have a total of six roles used for permissions control in the current application.\\  
 From these six roles in fact. Based on the feedback from the teachers and developers of the current BI-DBS portal and also my own research, we came to the conclusion that the access management system can be simplified by grouping the roles into three hierarchical layers.\\
 
 \noindent \textbf{Reasons for simplifying the access management:}
@@ -29,8 +29,6 @@ From these six roles in fact. Based on the feedback from the teachers and develo
 \end{enumerate}
 
 \noindent I am offering the simplification, which is based on grouping teaching roles that do not have significant permissions differences such as lecturer, examiner, instructor and teacher into one role. As I have already mentioned above, all the analyses are usually built on three roles where these 4 roles are taken as one role - teacher role, then there is a student and guarantor roles left which makes it a total of three.\\
-After researching the functionalities and permissions structure of the current project and discussing the possible change with developers and managers, I came to the conclusion that it is absolutely safe to generalize the permissions for those four teacher roles. As the result, I got a new clear KOS roles structure, which is visualized in Figure 3.1.
-
 
 \begin{figure}[h]
 \centering
@@ -39,25 +37,32 @@ After researching the functionalities and permissions structure of the current p
 \end{figure}
 
 
+\noindent After researching the functionalities and permissions structure of the current project and discussing the possible change with developers and managers, I came to the conclusion that it is absolutely safe to generalize the permissions for those four teacher roles. As a result, I got a new clear KOS roles structure, which is visualized in Figure 3.1.
+
+
+
+
 \subsection{Other roles}
 
 \noindent However, the user roles defined by KOS are not fulfilling all the requirements for the application. There are some special cases that require additional roles such as:
 
 \begin{itemize}
     \item \emph{Impersonation as a student.} For the purpose of demonstrating the process of creating a semestral work and its management, teachers need to have a functionality that will allow them to authorize as a student to show the whole process from the students' side. This feature requires creating a test student, which is identical to a usual student but needs  to differ from the usual KOS student role to exclude such students from counting the statistics. 
-    \item \emph{Development and testing.} For the development and testing processes there is a need to have a test admin user, which will have an access to all functionalities. 
+    \item \emph{Development and testing.} For the development and testing processes there is a need to have a test admin user, which will have access to all functionalities. 
 \end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.54]{../png/roles.png}
+\caption{Other roles}\label{picture:special_roles}
+\end{figure}
+
 
 \noindent For these requirements there were created two corresponding special roles:
 
 \begin{itemize}
-    \item \emph{Test student.} Identical to KOS student role from the perspective of permissions.
-    \item \emph{Root.} Role with access to all functionalities.
+    \item \emph{Test student.} This role is identical to KOS student role from the perspective of permissions. Therefore on the frontend we do not need to differ those two roles and the student test role will be mapped to a usual student role.
+    \item \emph{Admin.} Role with access to all functionalities.
 \end{itemize}
 
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.56]{../png/roles.png}
-\caption{Other roles}\label{picture:special_roles}
-\end{figure}
+\noindent Conclusively, the solution for the access control system lowered complexity and added flexibility, since one user can have only one role and the system is intuitive in usage. The result of constructing a roles system for the role-based access control is visualized in Figure 3.2.
