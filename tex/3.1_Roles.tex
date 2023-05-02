@@ -4,12 +4,12 @@ Since it is the best practice to assign as few roles to one user as it is possib
 \subsection{KOS roles}
 The BI-DBS portal receives information about an authorized user from the study information system(KOS) based on the course information. The course information contains the identifier of the semester and the type of study program. Generally, there are seven user roles that are defined by the KOS for subjects and courses.\cite{kosapi}\\
 
-\noindent \textbf{KOS roles for subjects and their general description:\cite{usermapapi}}
+\noindent \textbf{KOS roles for subjects and their general description:\cite{kosroles}}
 
 \begin{itemize}
     \item \emph{Guarantor.} Guarantor is a course administrator. Thus a person with this role typically has all permissions across all course management.
-    \item \emph{Examiner.} Examiners are responsible for managing and estimating students' exams. Therefore, this role would usually provide an access to exam materials and students' grades view and management.
-    \item \emph{Editor.} Editor is a person who can edit the information about the subject. This role would provide an access to subject information management.
+    \item \emph{Examiner.} Examiners are responsible for managing and estimating students' exams. Therefore, this role would usually provide access to exam materials and students' grades view and management.
+    \item \emph{Editor.} Editor is a person who can edit the information about the subject. This role would provide access to subject information management.
     \item \emph{Lecturer.} Lecturer role indicates that an individual with this role would need to be provided with access to manage course content including lectures, assignments and other study materials.
     \item \emph{Instructor.} Instructor is the role for teachers of exercises parallels. This role implies that a user needs permission to manage exercise materials and also estimate students' tests, semester works and other assignments.
     \item \emph{Teacher.} The teacher is a general role for a person, who does teaching in the course. 
@@ -47,7 +47,7 @@ Based on the feedback from the teachers and developers of the current BI-DBS por
 \noindent However, the user roles defined by KOS are not fulfilling all the requirements for the application. There are some special cases that require additional roles such as:
 
 \begin{itemize}
-    \item \emph{Impersonation as a student.} For the purpose of demonstrating the process of creating a semestral work and its management, teachers need to have a functionality that will allow them to authorize as a student to show the whole process from the students' side. This feature requires creating a test student, which is identical to a usual student but needs  to differ from the usual KOS student role to exclude such students records from counting the statistics. 
+    \item \emph{Impersonation as a student.} For the purpose of demonstrating the process of creating a semestral work and its management, teachers need to have a functionality that will allow them to authorize as a student to show the whole process from the students' side. This feature requires creating a test student, which is identical to a usual student but needs  to differ from the usual KOS student role to exclude such student records from counting the statistics. 
     \item \emph{Development and testing.} For the development and testing processes there is a need to have a test admin user, which will have access to all functionalities. 
 \end{itemize}
 
