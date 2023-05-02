@@ -1,10 +1,9 @@
-\section{Used software} The technologies used for the development of the BI-DBS portal are described in the the section 1.2. In this section I will mention which of them I have used for the implementation part in this thesis and also describe used libraries.\\
-The UI is implemented in Vue.js together with the Quasar framework for creating good-looking components and typescript as a scripting language. 
+\section{Used software} The technologies used for the development of the BI-DBS portal are described in section 1.3. In this section I will mention which of them I have used for the implementation part of this thesis and also describe the used libraries.\\
+The UI is implemented in Vue.js \cite{vue-docs} together with the Quasar framework \cite{quasar-doc} for creating good-looking components and Typescript \cite{typescript-doc} as a scripting language. 
 
-\subsection{Pinia.} Pinia is a state management library which I used it in the implementation for storing the state of users's authorization along with the users's identity information like for example roles. For a reason that it is considered a secure storage.
+\subsection{Pinia.} Pinia is a state management library that I used in the implementation for storing the state of users' authorization along with the user's identity information like for example roles. For the reason that it is considered secure storage. \cite{pinia-docs}
 
-\subsection{Router} Vue Router is a routing library, which provides mapping URLs to the components, which allows SPA to dynamicaly load pages based on the current URL. I have used it for managing accesses to the components based on the user's authentication state and identity. More about accesses in the section 4.3.
-% https://router.vuejs.org
+\subsection{Router} Vue Router is a routing library that provides mapping URLs to the components, allowing SPA to load pages based on the given URL dynamically. I have used it for managing access to the components based on the user's authentication state and identity. More about role-based access control is in section 4.3. \cite{router-doc}
 
-\subsection{Axios} Axios is a Javascript library for making HTTP requests from the browser of various request methods. It automatically transforms the response data to its response type and allows to intercept requests and responses. I have used it for communication with the backend.
-% https://github.com/axios/axios
+\subsection{Axios} Axios is a Javascript library for making HTTP requests from the browser of various request methods. It automatically transforms the response data to its response type and allows it to intercept requests and responses. I have used it for communication with the backend. \cite{axios-docs}
+
