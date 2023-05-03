@@ -1,4 +1,4 @@
-\section{Used tools}
+\section{Used tools} First step of adopting the automation concept is of course choosing suitable tools for the planned automation of processes.
 
 \subsection{Docker} Docker is an open-source platform that allows to build, run and deploy applications quickly using virtualization of server hardware in containers. Containers are light-weight units created by containerization of the application. Provided by Docker containerization is a technology of software packaging including code, libraries and other necessary dependencies and configurations for building the application.\\
 Docker was already chosen as a tool for running the application and I have decide to also use it for automation of building and development processes due to its flexibility, lightweight of containers and speed.
@@ -18,9 +18,12 @@ I have chosen the CloudFIT for hosting the BI-DBS frontend, because the servers 
 \subsection{Buildah} Buildah is a tool for containerization which is compatible with for example Docker. I have decided to use buildah because the faculty provided an image with Buildah for building docker containers, which is ready to use. Besides, from the small research it comparing it with for instance Docker in Docker(dind) turned out to be the most stable and efficient variant.
 %https://www.redhat.com/en/topics/containers/what-is-buildah
 %https://gitlab.fit.cvut.cz/ict/images/buildah
-%https://gitlab.fit.cvut.cz/ict/images/buildah
 
 % Nginx is an HTTP(s) server that will run in your docker container. It uses a configuration file to determine how to serve content/which ports to listen on/etc.
 \subsection{Nginx} Nginx is an open-source web server that can run in a docker container and allows numerous configuration options such as reverse proxy, load balancing, caching and others. The decision of using the Nginx was made due its simplicity in configuration.
 %https://cli.vuejs.org/guide/deployment.html#docker-nginx
 %https://www.nginx.com/resources/glossary/nginx/
+
+\subsection{Yarn} Yet Another Resource Negotiator(Yarn) is a JavaScript package manager which helps to manage project dependencies. It assists the application with managing packages, managing scripts and caching. Yarn was already in use in the BI-DBS frontend project, it has valuable benefits over other package managers like for instance parallel installation of packages and installation of packages without internet connection.
+%https://yarnpkg.com
+%https://www.knowledgehut.com/blog/web-development/yarn-vs-npm
