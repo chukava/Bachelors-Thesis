@@ -20,7 +20,7 @@
 \end{itemize}
 
 \subsubsection{Solution for the refresh token} The perfect solution for storing sensitive data in a browser does not exist and in order to keep the data secure there should be also implemented other vulnerability-reducing features like input data validation, escaping and others. However, with the proper use of security attributes, cookies are much more likely to mitigate those attacks. \cite{ls-vs-cookies} Moreover, using cookies for storing tokens is recommended by the OWASP \cite{owasp} community due to their secure configuration options. \cite{ls-vs-cookies-2} \\
-I have come to the solution of storing the refresh token, which is the most sensitive token requiring persistence across page reloads, in httpOnly cookies. HttpOnly cookies must be set on the server side as they are not accessible for JavaSccirpt. Therefore, I had to adjust the implementation of sending and receiving the refresh token in the authentication microservice from the body of requests to cookies. Listing 4.1 shows the configuration of security attributes for the refresh token cookie.
+I have come to the solution of storing the refresh token, which is the most sensitive token requiring persistence across page reloads, in httpOnly cookies. HttpOnly cookies must be set on the server side as they are not accessible for JavaScript. Therefore, I had to adjust the implementation of sending and receiving the refresh token in the authentication microservice from the body of requests to cookies. Listing 4.1 shows the configuration of security attributes for the refresh token cookie.
 
 \begin{lstlisting}[language=PHP, caption=Cookies setting on server]
 public function setRefreshTokenCookie(View $view, JWTToken $token): View
