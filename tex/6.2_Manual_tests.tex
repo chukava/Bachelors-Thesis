@@ -1,0 +1,31 @@
+\section{Manual testing} I have prepared a scenario for manual testing of all implemented features by the developers and also the group of users of the application. 
+
+\paragraph*{Roles.} The test must be provided for each of the roles separately. \\
+The roles are admin, guarantor, teacher, and student.
+
+\paragraph*{Conditions.} 
+\begin{itemize}
+    \item  Client and Server applications are running.
+    \item  Semester import was made, the user's username exists in the database and has at least one role for the imported course.
+    \item  User must have access to the database of connections microservice to change the roles for tests.
+    \item  The expiration time of the access token is mocked for 5 minutes.
+\end{itemize}
+
+\paragraph*{Test.} \
+
+\begin{table}[h]
+\begin{tabular}{|c|l|l|}
+\hline
+\multicolumn{1}{|l|}{} & Test Step:                                                                                                                                                           & Expected result:                                                                                                         \\ \hline
+1.                     & \begin{tabular}[c]{@{}l@{}}Try to access the home\\ page of the application.\end{tabular}                                                                            & Redirection to the login page.                                                                                           \\ \hline
+2.                     & Clicks on the login button.                                                                                                                                          & Redirected to the login form.                                                                                            \\ \hline
+3.                     & \begin{tabular}[c]{@{}l@{}}Submitted login form with\\ valid credentials.\end{tabular}                                                                               & Redirected to the home page.                                                                                             \\ \hline
+4.                     & \begin{tabular}[c]{@{}l@{}}Control all the displayed \\ navigation tabs to be \\ correct for your role.\end{tabular}                                                 & Tabs are displayed correctly.                                                                                            \\ \hline
+5.                     & Refresh the page.                                                                                                                                                    & \begin{tabular}[c]{@{}l@{}}Page was successfully refreshed, \\ user still has access to the \\ application.\end{tabular} \\ \hline
+6.                     & \begin{tabular}[c]{@{}l@{}}Leave a browser page with an\\ application open for 5 minutes\\ and then click to one of the tabs \\ from the navigation bar\end{tabular} & \begin{tabular}[c]{@{}l@{}}Component loaded by the path\\ of navigation tab.\end{tabular}                                \\ \hline
+7.                     & Click the logout button.                                                                                                                                             & \begin{tabular}[c]{@{}l@{}}The modal window displayed and \\ requires the submission to log out.\end{tabular}            \\ \hline
+8.                     & Submit.                                                                                                                                                              & Redirected to the login page.                                                                                            \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph*{Results.}
