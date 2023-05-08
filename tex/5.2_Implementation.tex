@@ -86,13 +86,24 @@ build:
     - buildah build --squash --tag $IMAGE_TAG -f Dockerfile
     - buildah push $IMAGE_TAG
   only:
-    - devtest
+    - master
 \end{lstlisting}
 
-\noindent The last two rows of the listing define the only branch for which this job will be executed. The BI-DBS frontend does not have a production version yet. Therefore I have decided to create the environment for deploying the application for testing during the development process. For that reason I have created a branch named devtest, any changes pushed to which will be automatically built and deployed.
+\noindent The last two rows of the listing define the only branch for which this job will be executed. The BI-DBS frontend does not have a production version yet. Therefore I have decided to create the environment for deploying the application for testing during the development process. The changes are configured to be built and deployed only from a master branch.
 
+\paragraph*{Change in the deployment flow.} In the current application the master branch is configured to be a production state branch, while the branch named devtest is used for deployment to the test environment. From my implementation there is a change that is going to be established to the new project, when a master will be to representing a state of a test environment and the deployment to the deployment to the production environment will be implemented by using tags for the master branch with the application version. This approach has several advantages for the BI-DBS frontend project.
 
-\subsubsection{Deploy} When it comes to deploy stage, it means that the application when though all the previous pipeline stages and application is ready to be deployed. The deployment process of the CI/CD pipeline is composed of execution of deployment script from the server. For the connetion to the server GitLab uses CI/CD variable which allow securely storing sensetive data, which need to be used in the pipeline like for example deployment user showed on line number six of listing 5.5.
+\begin{itemize}
+\item \emph{Easier maintenance and  flexibility.} Using just one branch reduces complexity of merging branches and maintenance of multiple branches. 
+
+\item \emph{Simulation of a production. } The master branch state always represents a state which is very similar to the production state. It means that developers can see how their changes would behave in the production. This implies a few next benefits.
+\begin{itemize}
+    \item It allows to thoroughly test the application before deploying to the\\ production.
+    \item Provides a possibility to give faster and higher quality feedback on code and changes.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Deploy} When it comes to deploy stage, it means that the application went though all the previous pipeline stages and is ready to be deployed. The deployment process of the CI/CD pipeline is composed of execution of the deployment script by the server. For the connection to the server GitLab uses CI/CD variables which allow securely storing sensitive data, which need to be used in the pipeline like for example deployment user showed on line number six of listing 5.5.
 
 
 \begin{lstlisting}[language=Octave, caption=Deploy stage in the CI/CD pipeline]
@@ -101,10 +112,65 @@ deploy:
   dependencies:
     - build
   script:
-    - ssh -A "${DEPLOYER_IP_ADDRESS}" -l ${DEPLOYER_USER} 'bash deploy-dbs-frontend.sh'
+    - ssh -A "${DEPLOYER_IP_ADDRESS}" -l ${DEPLOYER_USER} 'cd ~/dbs-frontend && git pull && cd ./.docker/server && bash deploy-dbs-frontend.sh'
   only:
-    - devtest
+    - master
 \end{lstlisting}
 
+\
 
-\noindent Deployment script contains few steps such as pulling Docker image from the GitLab created in the build stage, then creating and running a container and logging the container running. The configuration of this process is securely stored on the server.
+\noindent \textbf{Deployment script.} In a difference with a current application the deployment script is now being versioned and stored in the git remote repository instead of a server only. Therefore, before the script execution the server pulls all the changes from the remote repository.\\ The deployment script, which is shown in listing 5.6 contains few steps such as pulling Docker image from the GitLab created in the build stage on the row number seven, then running a container defined and configured in the \texttt{docker-compose.yaml} file showed in listing 5.7. Then the script provides the "healthcheck" of the environment, which is a check for controlling the availability of the resource. And finally on the last two rows script starts showing the logging of the container and removes unused images from the local docker host for removing the disk space.
+
+\begin{lstlisting}[language=Octave, caption=Deployment script]
+#!/bin/bash
+
+set -e
+
+HEALTHCHECK_URL="https://dbs3.fit.cvut.cz"
+
+docker compose pull
+docker compose up -d
+
+attempt_counter=0
+max_attempts=30
+
+until $(curl --output /dev/null --silent --head --fail "${HEALTHCHECK_URL}")
+do
+  if [ "${attempt_counter}" -eq "${max_attempts}" ]
+  then
+    echo "Max attempts reached"
+    docker logs dbs-microservices-frontend
+    exit 1
+  fi
+
+  attempt_counter=$(($attempt_counter+1))
+  echo "Waiting for URL ${HEALTHCHECK_URL}... (${attempt_counter}/${max_attempts})"
+  sleep 2
+done
+
+docker logs dbs-microservices-frontend
+docker image prune --force
+\end{lstlisting}
+
+\
+
+\noindent Listing 5.7 shows the file which is used for the configuration and run of container. Firstly, it defines the image which will be dowloaded from the GitLab. Secondly it defines a network, that allows the communication with the services from the same network. Thirdly it tells the service to restart automatically in it case it stops for any reason. Then it specifies the container ad host names as well as ports mapping. Finally it gives a label, which can be used for the service identification as a microservice of the application.
+
+\begin{lstlisting}
+version: '3.8'
+services:
+  dbs-frontend:
+    image: 'gitlab.fit.cvut.cz:5000/dbs/dbs-frontend:master'
+    networks:
+      - internal
+    restart: always
+    container_name: 'dbs-microservices-frontend'
+    hostname: 'dbs3.fit.cvut.cz.internal'
+    ports:
+      - '8080:80'
+    labels:
+      cz.cvut.fit.dbs.microservice: 'Frontend'
+networks:
+  internal:
+    external: true
+\end{lstlisting}

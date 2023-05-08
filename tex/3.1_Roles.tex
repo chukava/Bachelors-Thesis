@@ -47,7 +47,7 @@ Based on the feedback from the teachers and developers of the current BI-DBS por
 \noindent However, the user roles defined by KOS are not fulfilling all the requirements for the application. There are some special cases that require additional roles such as:
 
 \begin{itemize}
-    \item \emph{Impersonation as a student.} For the purpose of demonstrating the process of creating a semestral work and its management, teachers need to have a functionality that will allow them to authorize as a student to show the whole process from the students' side. This feature requires creating a test student, which is identical to a usual student but needs  to differ from the usual KOS student role to exclude such student records from counting the statistics. 
+    \item \emph{Impersonation as a student.} For the purpose of demonstrating the process of creating a semester work and its management, teachers need to have a functionality that will allow them to authorize as a student to show the whole process from the students' side. This feature requires creating a test student, which is identical to a usual student but needs  to differ from the usual KOS student role to exclude such student records from counting the statistics. 
     \item \emph{Development and testing.} For the development and testing processes there is a need to have a test admin user, which will have access to all functionalities. 
 \end{itemize}
 
@@ -62,7 +62,7 @@ Based on the feedback from the teachers and developers of the current BI-DBS por
 
 \begin{itemize}
     \item \emph{Test student.} This role is identical to the KOS student role from the perspective of permissions. Therefore on the frontend we do not need to differ those two roles and the student test role will be mapped to a usual student role.
-    \item \emph{Admin.} Role with access to all functionalities.
+    \item \emph{Admin(Root).} Role with access to all functionalities.
 \end{itemize}
 
 \noindent Conclusively, the solution for the access control system lowered complexity and added flexibility, due to the rule that one user can have only one role. Besides, now the roles system is very intuitive in usage. The result of constructing a roles system for the role-based access control is visualized in Figure 3.2.
