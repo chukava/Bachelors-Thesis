@@ -1,6 +1,10 @@
-\section{Manual testing} I have asked four people to do the manual user acceptance tests of the functionalities I have implemented. The implementation does not contain many UI components, but is focused on the proper functioning. As it was very important for me to make sure I have got tested all the features I have offered each tester a scenario show  to follow I have prepared a scenario, which is shown in table 6.1 for manual testing of the  implemented features. But also I gave a list of the requirements shown below, which they should also use for testing the features in random order and also estimate the look for a few UI components. Inhave also defined the roles which testers should have for each test and conditions they need to establish.  
+\section{Manual testing} I have asked four people to do the manual user acceptance tests of the functionalities I have implemented. The implementation does not contain many UI components, but is focused on the proper functioning. As it was very important for me to make sure, that I get all the features tested I have offered each tester a scenario, which is shown in Table 6.1. Moreover, I have created a list of the requirements shown below, which they also must use for testing the features in random order and also estimate the look for a few UI components. Besides, I have defined the roles that testers should use for testing and the conditions they need to establish.  
 
-\paragraph*{Roles.} The test must be provided for the role I have assigned to the user for checking the correctness of the access control system. Each tester has one of next four roles assigned: admin, guarantor, teacher, and student. All testers have different roles assigned.
+\
+
+\paragraph*{Roles.} The test must be provided for the role I have assigned to the tester for checking the correctness of the access control system. Each tester has one of the next four roles assigned: admin, guarantor, teacher, and student. All testers have different roles assigned.
+
+\
 
 \paragraph*{Conditions.} 
 \begin{itemize}
@@ -9,21 +13,23 @@
     \item  The expiration time of the access token is recommended to be mocked for five minutes.
 \end{itemize}
 
+\
 
 \paragraph*{Requirements for the application.} 
 \begin{itemize}
-    \item No access to the application for non-authorized user.
+    \item No access to the application for non-authorized users.
     \item Clear and fast login procedure.
     \item Access control responds to the role permissions.
-    \item Application allows persistent authorization across the page reload.
-    \item Application does not require repeated authorization after the access token expiration (five minutes iin a case of a mocked expiration time instructed in conditions section or sixty minutes if nit mocked).
-    \item Logout procedure includes the modal window for submitting the option to logout.
+    \item Application allows persistent authorization across the page reloads.
+    \item Application does not require repeated authorization after the access token expiration (five minutes in a case of a mocked expiration time instructed in the conditions section or sixty minutes if not mocked).
+    \item Logout procedure includes the modal window for submitting the option to log out.
     \item Logout process is clear and fast.
     \item Login and logout UI components are good-looking.
 \end{itemize}
 
-\
 
+
+\newpage
 \noindent \textbf{Offered scenario.} 
 
 \begin{table}[ht]

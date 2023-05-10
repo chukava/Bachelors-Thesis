@@ -1,4 +1,4 @@
-\section{Tests for CI} Providing a set of regression tests for the CI pipeline is clearly good practice, since they will be executed with every change provided to the remote repository and make sure that if any of those changes will affect the functionality of the tested code the pipeline will fail and the code with defects will not be deployed. Moreover, tests will tell the developer exactly what unit was affected by their changes and require a fix.
+\section{Tests for CI} Providing a set of regression tests for the CI pipeline is clearly good practice since they will be executed with every change provided to the remote repository and make sure that if any of those changes will affect the functionality of the tested code the pipeline will fail and the code with defects will not be deployed. Moreover, tests will tell the developer exactly what unit was affected by their changes and require a fix.
 
 
 \subsection{Vitest} Vite is a frontend build tool used for the BI-DBS frontend. Vitest is a unit test framework built on top of Vite. It is a suitable tool for implementing tests in the project like the BI-DBS frontend which uses Vite. Vitest cares a lot about performance and speed, which makes it a good choice for tests that will be a part of CI pipeline. \cite{vitest}
@@ -64,13 +64,9 @@
             \item \emph{Conditions:} User is authorized and the request for rejecting the access token succeeded.
             \item \emph{Expected result:} User was successfully logged out.
         \end{itemize}
-    \item \emph{Negative scenario} 
-        \begin{itemize}
-            \item \emph{Conditions:} The request for rejecting the access token fails.
-            \item \emph{Expected result.} The errors from the request are successfully handled and the user was logged out.
-        \end{itemize}
 \end{itemize}
 
+\noindent Negative scenario test for the rejection of the token does not have to be provided as the service behavior as for the positive scenario.
 
 \
 
@@ -94,7 +90,7 @@
 
 \ 
 
-\paragraph*{The results of unit testing.} Frankly speaking, in the beginning I have underestimated the importance of the unit tests implementation as I was very confident about my code as it was structured and clear for me to work correctly. Moreover, multiple times I have successfully tested all the functionalities manually myself.\\
+\paragraph*{The results of unit testing.} Frankly speaking, in the beginning I underestimated the importance of the unit tests implementation as I was very confident about my code as it was structured and clear for me to work correctly. Moreover, multiple times I have successfully tested all the functionalities manually myself.\\
 Unexpectedly, The implementation of the unit tests process helped me to uncover and correct some weaknesses in the implementation of some functions. But most importantly, thanks to the creation of tests with also negative scenarios I have found some unhandled errors and was able to test the implementation in the various conditions.\\
 The full set of tests is added to the CI pipeline and executed by every change pushed to the repository. The duration of tests as you can see in Figure 6.1 is less than four seconds, which is a remarkably good result.
 
@@ -105,3 +101,4 @@ The full set of tests is added to the CI pipeline and executed by every change p
 \includegraphics[scale=0.47]{../png/tests.png}
 \caption{CI tests}\label{picture:tests}
 \end{figure}
+
