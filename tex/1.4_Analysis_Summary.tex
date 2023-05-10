@@ -2,7 +2,7 @@
 
 
 \subsection{Summary} 
-In order to summarize all changes and provide a better visualization of them, I arranged them all in Table 1.1.\\
+In order to summarize all changes and provide a better visualization of them, I arranged them all in Table \ref{demo-table}.\\
 Evidently, the Nette framework is the core of the current project, which is responsible for managing the application in many ways. Although it can function well, it creates dependencies between the functionalities and makes the project less flexible, which is a significant disadvantage for large applications like the BI-DBS portal.\\
 The planned state does not have dominating technologies that would cause this problem. Most of them are replaceable and flexible.
 
@@ -27,11 +27,11 @@ The planned state does not have dominating technologies that would cause this pr
 \caption{\label{demo-table}Visualisation of changes.}
 \end{table}
 
-\subsection{Implications} From the analyses in sections 1.2 and 1.3, we can see that existing problems in the current project are eliminated by chosen architecture and technologies for the planned state. Let's examine the main possible negative effects of the changes and how to deal with them.
+\subsection{Implications} From the analyses in sections \ref{sec12} and \ref{sec13}, we can see that existing problems in the current project are eliminated by chosen architecture and technologies for the planned state. Let's examine the main possible negative effects of the changes and how to deal with them.
 
 \begin{itemize}
-    \item Microservices architecture provides such advantages as agility and fast deployment. This architecture is more complex in comparison with a monolithic one. Therefore it comes along with establishing some of the DevOps principles for the project. Mainly configuring continuous integration and automated deployment. DevOps concepts and automation including CI and CD are described in the second chapter.
+    \item Microservices architecture provides such advantages as agility and fast deployment. This architecture is more complex in comparison with a monolithic one. Therefore it comes along with establishing some of the DevOps principles for the project. Mainly configuring continuous integration and automated deployment. DevOps concepts and automation including CI and CD are described in the chapter \ref{chap2}.
     \item In the current application, Nette is a core full-stack framework that is also responsible for managing the application's security. Besides, the monolithic architecture allows you to store all the data on the server side. The communication between the client side and server side is secure.\\
-    In microservices applications, there is constant communication between the frontend and the backend and exchanging sensitive data. Therefore it is crucial to control every step of that communication with control of permissions and inputs validation on both the client and server sides. Thus the application should have a clearly defined access management system which I will introduce in the third chapter.
+    In microservices applications, there is constant communication between the frontend and the backend and exchanging sensitive data. Therefore it is crucial to control every step of that communication with control of permissions and inputs validation on both the client and server sides. Thus the application should have a clearly defined access management system which I will introduce in the chapter \ref{chap3}.
     \item Since all the services are developed, deployed and tested separately, there is a higher chance of failure in communication between them. Obviously, It is not enough to test only the functionalities of singles services but to test their integration. Therefore it is essential to design a new integration testing system for the application. It is necessary to eliminate the possibility of the cascade failure of services.
 \end{itemize}

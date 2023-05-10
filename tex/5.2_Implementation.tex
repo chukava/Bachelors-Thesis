@@ -1,8 +1,7 @@
-\section{Implementation} Second step of adopting the automation practices is setting up the processes using chosen tools. The implementation goal is to pro 
+\section{Implementation}\label{sec52} Second step of adopting the automation practices is setting up the processes using chosen tools.
 
 
-\subsection{Containerization}  I have adopted the containerization using Docker for a use in CI/CD pipeline. The Dockerfile simply contains the instruction for building a Docker images. It composed of specific commands which tell how to build the image. A Docker image is a read-only file containing a set of instructions. When these instructions are executed, a Docker container is created. 
-%https://www.simplilearn.com/tutorials/docker-tutorial/what-is-dockerfile
+\subsection{Containerization}  I have adopted containerization using Docker for use in CI/CD pipeline. The Dockerfile simply contains the instruction for building a Docker image. It is composed of specific commands which tell how to build the image. A Docker image is a read-only file containing a set of instructions. When these instructions are executed, a Docker container is created. 
 
 
 \begin{lstlisting}[language=Octave, caption=Dockerfile]
@@ -19,12 +18,12 @@ COPY --from=build /app/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
 \end{lstlisting}
 
-\noindent Dockerfile showed on listing 5.1 contains installing dependencies on the fifth row and application bundling on the six's row using Yarn and also adding Nginx configuration from the \texttt{nginx.conf} file on the last row, which defines parameters like hostname, listen port and others.
+\noindent Dockerfile showed on Listing 5.1 contains installing dependencies on the fifth row and application bundling on the six's row using Yarn and also adding Nginx configuration from the \texttt{nginx.conf} file on the last row, which defines parameters like hostname, listen port and others.
 
 
 
 \subsection{CI/CD pipeline configuration} CI/CD pipeline is a set of steps that are executed when the pipeline was triggered.\\
-Listing 5.2 shows all the stages of the CI/CD pipeline. First two stages where configured by Ing. Oldřich Malec with the first setup of the frontend projects. Download stage installs all the dependencies required for the application run. Codestyle stage provides linting of the source code. Other three stages I have implemented in this thesis.
+Listing 5.2 shows all the stages of the CI/CD pipeline. The first two stages were configured by Ing. Oldřich Malec with the first setup of the frontend projects. The download stage installs all the dependencies required for the application to run. The codestyle stage provides linting of the source code. Other three stages I have implemented in this thesis.
 \begin{lstlisting}[language=Octave, caption=Gitlab CI/CD stages]
 stages:
   - download
@@ -42,12 +41,12 @@ stages:
 \caption{CI/CD pipeline in GitLab}
 \end{figure}
 
-\noindent The pipeline stages are executed from left to right and if any of the stages fails all the other ones will be skipped. It helps to avoid pointless running of jobs, because the stages are put in the way that they depend on the result of the previous ones. 
+\noindent The pipeline stages are executed from left to right and if any of the stages fails all the other ones will be skipped. It helps to avoid the pointless running of jobs because the stages are put in a way that they depend on the result of the previous ones. 
 
 
 
 
-\subsubsection{Test} Test stages contains one job which I have named vitest, because it executes unit tests implemented using Vitest framework which will be introduced in the six's chapter. For running the tests I have used Yarn, which provides the tests execution by running just one command which is added to script section on the line fifteen of the listing 5.3. 
+\subsubsection{Test} Test stages contain one job which I have named Vitest, because it executes unit tests implemented using Vitest framework which will be introduced in the chapter \ref{chapter6}. For running the tests I have used Yarn, which provides the execution of the tests by running just one command which is added to the script section on line fifteen of the Listing 5.3. 
 \begin{lstlisting}[language=Octave, caption=Test stage in the CI/CD pipeline]
 .image_template: &image
   image: $CI_REGISTRY/ict/images/alpine/ci:3.16
@@ -69,12 +68,12 @@ vitest:
 
 \end{lstlisting}
 
-\noindent For the tests execution setup in the pipeline I have used image and cache pull templates, which were already prepared and used for the download and codestyle stages.
+\noindent For the test execution setup in the pipeline I have used image and cache pull templates, which were already prepared and used for the download and codestyle stages.
 
 
 
 
-\subsubsection{Build} Build stage is focused on building an image and adding it to the GitLab container registry of the project. I have used the faculties image containing buildah and buildah itself for the script which is shown in listing 5.4. Command from the row number seven will create the image and the next command from the row number eight will upload it to GitLab registry.\\
+\subsubsection{Build} Build stage is focused on building an image and adding it to the GitLab container registry of the project. I have used the faculties image containing buildah and buildah itself for the script which is shown in Listing 5.4. Command from row number seven will create the image and the next command from row number eight will upload it to the GitLab registry.\\
 
 \begin{lstlisting}[language=Octave, caption=Build stage in the CI/CD pipeline]
 build:
@@ -94,16 +93,16 @@ build:
 \paragraph*{Change in the deployment flow.} In the current application the master branch is configured to be a production state branch, while the branch named devtest is used for deployment to the test environment. From my implementation there is a change that is going to be established to the new project, when a master will be to representing a state of a test environment and the deployment to the deployment to the production environment will be implemented by using tags for the master branch with the application version. This approach has several advantages for the BI-DBS frontend project.
 
 \begin{itemize}
-\item \emph{Easier maintenance and  flexibility.} Using just one branch reduces complexity of merging branches and maintenance of multiple branches. 
+\item \emph{Easier maintenance and  flexibility.} Using just one branch reduces the complexity of merging branches and maintenance of multiple branches. 
 
-\item \emph{Simulation of a production. } The master branch state always represents a state which is very similar to the production state. It means that developers can see how their changes would behave in the production. This implies a few next benefits.
+\item \emph{Simulation of a production. } The master branch state always represents a state which is very similar to the production state. It means that developers can see how their changes would behave in production. This implies a few next benefits.
 \begin{itemize}
     \item It allows to thoroughly test the application before deploying to the\\ production.
     \item Provides a possibility to give faster and higher quality feedback on code and changes.
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Deploy} When it comes to deploy stage, it means that the application went though all the previous pipeline stages and is ready to be deployed. The deployment process of the CI/CD pipeline is composed of execution of the deployment script by the server. For the connection to the server GitLab uses CI/CD variables which allow securely storing sensitive data, which need to be used in the pipeline like for example deployment user showed on line number six of listing 5.5.
+\subsubsection{Deploy} When it comes to deploy stage, it means that the application went through all the previous pipeline stages and is ready to be deployed. The deployment process of the CI/CD pipeline is composed of the execution of the deployment script by the server. For the connection to the server GitLab uses CI/CD variables that allow securely storing sensitive data, which need to be used in the pipeline like for example deployment user showed on line number six of Listing 5.5.
 
 
 \begin{lstlisting}[language=Octave, caption=Deploy stage in the CI/CD pipeline]
@@ -119,7 +118,7 @@ deploy:
 
 \
 
-\noindent \textbf{Deployment script.} In a difference with a current application the deployment script is now being versioned and stored in the git remote repository instead of a server only. Therefore, before the script execution the server pulls all the changes from the remote repository.\\ The deployment script, which is shown in listing 5.6 contains few steps such as pulling Docker image from the GitLab created in the build stage on the row number seven, then running a container defined and configured in the \texttt{docker-compose.yaml} file showed in listing 5.7. Then the script provides the "healthcheck" of the environment, which is a check for controlling the availability of the resource. And finally on the last two rows script starts showing the logging of the container and removes unused images from the local docker host for removing the disk space.
+\noindent \textbf{Deployment script.} In a difference with a current application the deployment script is now being versioned and stored in the git remote repository instead of a server only. Therefore, before the script execution the server pulls all the changes from the remote repository.\\ The deployment script, which is shown in Listing 5.6 contains a few steps such as pulling the Docker image from the GitLab created in the build stage on row number seven, then running a container defined and configured in the \texttt{docker-compose.yaml} file showed in Listing 5.7. Then the script provides the "healthcheck" of the environment, which is a check for controlling the availability of the resource. And finally on the last two rows script starts showing the logging of the container and removes unused images from the local docker host for removing the disk space.
 
 \begin{lstlisting}[language=Octave, caption=Deployment script]
 #!/bin/bash
@@ -154,9 +153,9 @@ docker image prune --force
 
 \
 
-\noindent Listing 5.7 shows the file which is used for the configuration and run of container. Firstly, it defines the image which will be dowloaded from the GitLab. Secondly it defines a network, that allows the communication with the services from the same network. Thirdly it tells the service to restart automatically in it case it stops for any reason. Then it specifies the container ad host names as well as ports mapping. Finally it gives a label, which can be used for the service identification as a microservice of the application.
+\noindent Listing 5.7 shows the file which is used for the configuration and run of the container. Firstly, it defines the image which will be downloaded from GitLab. Secondly, it defines a network, that allows communication with the services from the same network. Thirdly it tells the service to restart automatically in case it stops for any reason. Then it specifies the container ad host names as well as port mapping. Finally it gives a label, which can be used for the service identification as a microservice of the application.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Octave, caption=docker-compose.yml]
 version: '3.8'
 services:
   dbs-frontend:

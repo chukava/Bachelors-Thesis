@@ -1,7 +1,7 @@
-\section{Access control} The BI-DBS portal uses role-based access control \cite{role-auth}. In the third chapter I have designed the roles system and described their permissions. With the use of that system I have implemented the regulation of displaying the components and controlling access by roles and also verification of users' authorization for accessing components and making requests.
+\section{Access control} The BI-DBS portal uses role-based access control \cite{role-auth}. In the chapter \ref{chap3} I have designed the roles system and described their permissions. With the use of that system I have implemented the regulation of displaying the components and controlling access by roles and also verification of users' authorization for accessing components and making requests.
 
-\subsection{Role-based access control} Vue Router is first of all responsible for displaying the components by the given path. However, it has multiple other features which I have used for my implementation.\\
-Firstly it allows dynamically setting of different parameters in meta object, you can see the example of a component configuration and meta object in listing 4.4.\\
+\subsection{Role-based access control}\label{role-impl} Vue Router is first of all responsible for displaying the components by the given path. However, it has multiple other features which I have used for my implementation.\\
+Firstly it allows dynamically setting of different parameters in meta object, you can see the example of a component configuration and meta object in Listing 4.4.\\
 
 \noindent \textbf{Meta parameters for the component:}
 
@@ -27,7 +27,7 @@ Firstly it allows dynamically setting of different parameters in meta object, yo
 }
 \end{lstlisting}
 
-\noindent First two meta parameters are used for the access control, which is implemented as Router configuration. The Router allows to set a set of functionalities before each routing which I have used for the verification of a user's access to the component. This validation is presented in listing 4.5.
+\noindent First two meta parameters are used for the access control, which is implemented as Router configuration. The Router allows to set a set of functionalities before each routing which I have used for the verification of a user's access to the component. This validation is presented in Listing 4.5.
 
 
 \begin{lstlisting}[language=Octave, caption=Validation of access by role]
@@ -77,7 +77,7 @@ function verifyRole(to: RouteLocationNormalized) {
 
 
 
-\paragraph*{Display control of components.} Another example of role-based access control benefits and usage is using it for the display control of UI components. A developer can easily control displaying of any component by setting the required role for it and using the \texttt{hasRole()} function shown in listing 4.6. The code listing 4.7. shows exactly the case like that. In the top navigation bar configuration I have set the required role for displaying the administration component and used a filter for displaying only the components user has access to.
+\paragraph*{Display control of components.} Another example of role-based access control benefits and usage is using it for the display control of UI components. A developer can easily control displaying of any component by setting the required role for it and using the \texttt{hasRole()} function shown in Listing 4.6. The code Listing 4.7. shows exactly the case like that. In the top navigation bar configuration I have set the required role for displaying the administration component and used a filter for displaying only the components user has access to.
 
 \begin{lstlisting}[language=Octave, caption=Role validation]
 export function hasRole(role: RoleTOBE) : boolean {
@@ -117,7 +117,7 @@ function useTopBarConfig() {
 \
 
 \subsection{Authentication control for requests} Another important validation is verification of access for making requests to avoid the pointless calling of backend services when the user is not authorized or the access token has expired. Especially in the case when the access token has expired we need to detect it and execute the refresh process.\\
-In 4.3.2.2 I have provided a code listing 4.3 of the configuration of the Axios interceptors for the request. That configuration contains a \texttt{verifyAccess()} function which makes sure the user is authorized before making the request. That function is illustrated in listing 4.8.\\
+In 4.3.2.2 I have provided a code Listing 4.3 of the configuration of the Axios interceptors for the request. That configuration contains a \texttt{verifyAccess()} function which makes sure the user is authorized before making the request. That function is illustrated in Listing 4.8.\\
 
 
 \begin{lstlisting}[language=Octave, caption=Access verification for making requests]

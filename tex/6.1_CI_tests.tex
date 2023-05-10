@@ -11,12 +11,12 @@
 
 \paragraph*{Test cases for the token generating service} 
 \begin{itemize}
-    \item \emph{Positive scenario:} 
+    \item \emph{Positive scenario.} 
         \begin{itemize}
             \item \emph{Conditions:} A valid token is successfully returned in the valid response.
             \item \emph{Expected result:} User was successfully authorized.
         \end{itemize}
-    \item \emph{Negative scenario} 
+    \item \emph{Negative scenario.} 
         \begin{itemize}
             \item \emph{Conditions:} An invalid token is successfully returned in the valid response.
             \item \emph{Expected result.} The errors from parsing the token are successfully handled and the user was not authorized.
@@ -35,12 +35,12 @@
 
 \paragraph*{Test cases for the token refreshing service} 
 \begin{itemize}
-    \item \emph{Positive scenario:} 
+    \item \emph{Positive scenario.} 
         \begin{itemize}
             \item \emph{Conditions:} User is authorized and the request for refreshing the access token succeeded and the server returned a new valid access token.
             \item \emph{Expected result:} The authorization time for a user was prolonged to the expiration time of the newly received access token.
         \end{itemize}
-    \item \emph{Negative scenario} 
+    \item \emph{Negative scenario.} 
         \begin{itemize}
             \item \emph{Conditions:} User is authorized and the request for refreshing the access token succeeded but returned an invalid token.
             \item \emph{Expected result.} The errors from parsing the token are successfully handled and the user was logged out.
@@ -59,7 +59,7 @@
 
 \paragraph*{Test cases for the token rejecting service} 
 \begin{itemize}
-    \item \emph{Positive scenario:} 
+    \item \emph{Positive scenario.} 
         \begin{itemize}
             \item \emph{Conditions:} User is authorized and the request for rejecting the access token succeeded.
             \item \emph{Expected result:} User was successfully logged out.
@@ -76,7 +76,7 @@
 
 \paragraph*{Test cases for the authorization service} 
 \begin{itemize}
-    \item \emph{Positive scenario:} 
+    \item \emph{Positive scenario.} 
         \begin{itemize}
             \item \emph{Conditions:} The frontend calls the function to create an URL to initiate an authorization process by sending a request to the authorization server,
             \item \emph{Expected result:} The URL is valid.
@@ -92,7 +92,7 @@
 
 \paragraph*{The results of unit testing.} Frankly speaking, in the beginning I underestimated the importance of the unit tests implementation as I was very confident about my code as it was structured and clear for me to work correctly. Moreover, multiple times I have successfully tested all the functionalities manually myself.\\
 Unexpectedly, The implementation of the unit tests process helped me to uncover and correct some weaknesses in the implementation of some functions. But most importantly, thanks to the creation of tests with also negative scenarios I have found some unhandled errors and was able to test the implementation in the various conditions.\\
-The full set of tests is added to the CI pipeline and executed by every change pushed to the repository. The duration of tests as you can see in Figure 6.1 is less than four seconds, which is a remarkably good result.
+The full set of tests is added to the CI pipeline and executed by every change pushed to the repository. The duration of tests as you can see in Figure \ref{img:test} is less than four seconds, which is a remarkably good result.
 
  \
 
@@ -100,5 +100,6 @@ The full set of tests is added to the CI pipeline and executed by every change p
 \centering
 \includegraphics[scale=0.47]{../png/tests.png}
 \caption{CI tests}\label{picture:tests}
+\label{img:test}
 \end{figure}
 

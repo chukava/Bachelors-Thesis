@@ -1,9 +1,9 @@
-\section{Used software} The technologies used for the development of the BI-DBS portal are described in section 1.3. In this section I will mention which of them I have used for the implementation part of this thesis and also describe the used libraries.\\
+\section{Used software} The technologies used for the development of the BI-DBS portal are described in section \ref{sec13}. In this section I will mention which of them I have used for the implementation part of this thesis and also describe the used libraries.\\
 The UI is implemented in Vue.js \cite{vue-docs} together with the Quasar framework \cite{quasar-doc} for creating good-looking components and Typescript \cite{typescript-doc} as a programming language. 
 
 \subsection{Pinia.} Pinia is a reactive state management library. It allows to easily update data and react to changes in the application's state. Besides, it provides type safety and thus integrates well with Typescript. In my implementation I have used it for storing the state of users' authorization along with the user's identity information such as their role. \cite{pinia-docs}
 
-\subsection{Router} Vue Router is a routing library that provides mapping URLs to the components, allowing SPA to load pages based on the given URL dynamically. I have used it for managing access to the components based on the user's authentication state and identity. More about role-based access control is in section 4.3. \cite{router-doc}
+\subsection{Router} Vue Router is a routing library that provides mapping URLs to the components, allowing SPA to load pages based on the given URL dynamically. I have used it for managing access to the components based on the user's authentication state and identity. More about role-based access control is in section \ref{role-impl}. \cite{router-doc}
 
 \subsection{Axios} Axios is a Javascript library for making HTTP requests from the browser of various request methods. It automatically transforms the response data to its response type and allows it to intercept requests and responses. I have used it for communication with the backend. \cite{axios-docs}
 

@@ -1,10 +1,10 @@
 \section{Roles} The role itself is a collection of permissions. To decide what roles the application needs and what permissions those roles would have, we have to start by analyzing the users of the application and their needs. My analysis will be based on the existing roles and access control system.\\
-Since it is the best practice to assign as few roles to one user as it is possible \cite{role-auth} to avoid creating an excessively complex management system I will aim for simplification of the current access control system. In this section I will describe the roles of the current BI-DBS portal and offer a simplification for the new application, which I will use for my implementation of role-based access control described in section 4.4.
+Since it is the best practice to assign as few roles to one user as it is possible \cite{role-auth} to avoid creating an excessively complex management system I will aim for simplification of the current access control system. In this section I will describe the roles of the current BI-DBS portal and offer a simplification for the new application, which I will use for my implementation of role-based access control described in section \ref{role-impl}.
 
 \subsection{KOS roles}
-The BI-DBS portal receives information about an authorized user from the study information system(KOS) based on the course information. The course information contains the identifier of the semester and the type of study program. Generally, there are seven user roles that are defined by the KOS for subjects and courses.\cite{kosapi}\\
+The BI-DBS portal receives information about an authorized user from the study information system(KOS) based on the course information. The course information contains the identifier of the semester and the type of study program. Generally, there are seven user roles that are defined by the KOS for subjects and courses. \cite{kosapi}\\
 
-\noindent \textbf{KOS roles for subjects and their general description:\cite{kosroles}}
+\noindent \textbf{KOS roles for subjects and their general description: \cite{kosroles}}
 
 \begin{itemize}
     \item \emph{Guarantor.} Guarantor is a course administrator. Thus a person with this role typically has all permissions across all course management.
@@ -28,7 +28,7 @@ Based on the feedback from the teachers and developers of the current BI-DBS por
     \item Due to a lack of information about the roles developers often do not have a good understanding of all roles meaning and thus they tend to forget to permit access for some roles or confuse them with others.
 \end{enumerate}
 
-\noindent I am offering the simplification, which is based on grouping teaching roles that do not have significant permissions differences such as lecturer, examiner, instructor and teacher into one role. As I have already mentioned above, all the analyses are usually built on three roles where these 4 roles are taken as one role - teacher role, then there is a student and guarantor roles left which makes it a total of three.\\
+\noindent I am offering the simplification, which is based on grouping teaching roles that do not have significant permissions differences such as lecturer, examiner, instructor and teacher into one role. As I have already mentioned above, all the analyses are usually built on three roles where these four roles are taken as one role - teacher role, then there is a student and guarantor roles left which makes it a total of three.\\
 
 \begin{figure}[h]
 \centering
@@ -37,7 +37,7 @@ Based on the feedback from the teachers and developers of the current BI-DBS por
 \end{figure}
 
 
-\noindent After researching the functionalities and permissions structure of the current project and discussing the possible change with developers and managers, I came to the conclusion that it is absolutely safe to generalize the permissions for those four teacher roles. As a result, I got a new clear KOS roles structure, which is visualized in Figure 3.1.
+\noindent After researching the functionalities and permissions structure of the current project and discussing the possible change with developers and managers, I came to the conclusion that it is absolutely safe to generalize the permissions for those four teacher roles. As a result, I got a new clear KOS roles structure, which is visualized in Figure \ref{picture:kos_roles}.
 
 
 
@@ -65,4 +65,4 @@ Based on the feedback from the teachers and developers of the current BI-DBS por
     \item \emph{Admin(Root).} Role with access to all functionalities.
 \end{itemize}
 
-\noindent Conclusively, the solution for the access control system lowered complexity and added flexibility, due to the rule that one user can have only one role. Besides, now the roles system is very intuitive in usage. The result of constructing a roles system for the role-based access control is visualized in Figure 3.2.
+\noindent Conclusively, the solution for the access control system lowered complexity and added flexibility, due to the rule that one user can have only one role. Besides, now the roles system is very intuitive in usage. The result of constructing a roles system for the role-based access control is visualized in Figure \ref{picture:special_roles}.

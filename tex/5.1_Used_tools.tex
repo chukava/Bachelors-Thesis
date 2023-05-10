@@ -1,21 +1,21 @@
-\section{Used tools} First step of adopting the automation concept is of course choosing suitable tools for the planned automation of processes.
+\section{Used tools}\label{sec51} First step of adopting the automation concept is choosing suitable tools for the planned automation of processes.
 
 
-\subsection{Docker} Docker is an open-source platform that allows to build, run and deploy applications quickly using virtualization of server hardware in containers. Containers are light-weight units created by containerization of the application. Provided by Docker containerization is a technology of software packaging including code, libraries and other necessary dependencies and configurations for building the application.\\
-Docker was already chosen as a tool for running the application and I have decide to also use it for automation of building and development processes due to its flexibility, lightweight of containers and speed. \cite{docker, docker-2}
+\subsection{Docker} Docker is an open-source platform that allows to build, run and deploy applications quickly using virtualization of server hardware in containers. Containers are lightweight units created by the containerization of the application. The containerization provided by Docker is a technology of software packaging including code, libraries and other necessary dependencies and configurations for building the application.\\
+Docker was already chosen as a tool for running the application and I have decided to also use it for the automation of building and development processes due to its flexibility, lightweight containers and speed. \cite{docker, docker-2}
 
-\subsection{GitLab} GitLab is a web service based on Git version control system that is also a DevSecOps \cite{devsecops} platform with multiple functionllities. It allows to plan, track and manage issues, manage automation process using CI/CD pipelines. Besides it lets to schedule jobs, create merge requests, do code reviwes and provides many other features. Its main benefit that a software development team can use GitLab instead of using many other tools as it combines many features. \cite{gitlab, gitlab-2}\\
-GitLab is generally used for many school application including the BI-DBS portal. Therefore it was the obvious choice to using it for the automation processes. 
+\subsection{GitLab} GitLab is a web service based on the Git version control system that is also a DevSecOps \cite{devsecops} platform with multiple functionalities. It allows to plan, track and manage issues, as well as manage automation processes using CI/CD pipelines. Besides it lets to schedule jobs, create merge requests, do code reviews and provides many other features. Its main benefit is that a software development team can use GitLab instead of using many other tools as it combines many features. \cite{gitlab, gitlab-2}\\
+GitLab is generally used for many school applications including the BI-DBS portal. Therefore it was the obvious choice to use it for the automation processes. 
 
 
 
 \subsection{CloudFIT} CloudFIT is a platform for everyone from FIT CTU, which provides server management from usual web applications hosting to complex calculations and simulations. \cite{cloudfit}\\
-I have chosen the CloudFIT for hosting the BI-DBS frontend, because the servers are managed by the faculty and faculty workers are open for consulting the server parameters. Besides, it is free of charge, has a well-written documentation and recommended for hosting school applications.
+I have chosen CloudFIT for hosting the BI-DBS frontend, because the servers are managed by the faculty and faculty workers are open to consulting the server parameters. Besides, it is free of charge, has well-written documentation and is recommended for hosting school applications.
 
-\subsection{Buildah} Buildah is a tool for containerization which is compatible with for example Docker. I have decided to use buildah because the faculty provided an image with Buildah for building docker containers, which is ready to use. Besides, from my own small research of comparing it with for instance Docker in Docker(dind) it turned out to be the most stable and efficient variant. \cite{buildah}
-
-
-\subsection{Nginx} Nginx is an open-source web server that can run in a docker container and allows numerous configuration options such as reverse proxy, load balancing, caching and others. The decision of using the Nginx was made due its simplicity in configuration. \cite{nginx, nginx-2}
+\subsection{Buildah} Buildah is a tool for containerization which is compatible with for example Docker. I have decided to use Buildah because the faculty provided an image with Buildah for building docker containers, which is ready to use. Besides, from my own small research comparing it with for instance Docker in Docker(dind) it turned out to be the most stable and efficient variant. \cite{buildah}
 
 
-\subsection{Yarn} Yet Another Resource Negotiator(Yarn) is a JavaScript package manager which helps to manage project dependencies. It assists the application with managing packages, managing scripts and caching. Yarn was already in use in the BI-DBS frontend project, it has valuable benefits over other package managers like for instance parallel installation of packages and installation of packages without internet connection. \cite{yarn, yarn-2}
+\subsection{Nginx} Nginx is an open-source web server that can run in a docker container and allows numerous configuration options such as reverse proxy, load balancing, caching and others. The decision to use Nginx was made due to its simplicity in configuration. \cite{nginx, nginx-2}
+
+
+\subsection{Yarn} Yet Another Resource Negotiator(Yarn) is a JavaScript package manager which helps to manage project dependencies. It assists the application with managing packages, managing scripts and caching. Yarn was already in use in the BI-DBS frontend project, it has valuable benefits over other package managers like for instance parallel installation of packages and installation of packages without an internet connection. \cite{yarn, yarn-2}
