@@ -1,8 +1,7 @@
 \section{Tests for CI} Providing a set of regression tests for the CI pipeline is clearly good practice, since they will be executed with every change provided to the remote repository and make sure that if any of those changes will affect the functionality of the tested code the pipeline will fail and the code with defects will not be deployed. Moreover, tests will tell the developer exactly what unit was affected by their changes and require a fix.
 
 
-%https://vitest.dev
-\subsection{Vitest} Vite is a frontend build tool used for the BI-DBS frontend. Vitest is a unit test framework built on top of Vite. It is a suitable tool for implementing tests in the project like the BI-DBS frontend which uses Vite. Vitest cares a lot about performance and speed, which makes it a good choice for tests that will be a part of CI pipeline.
+\subsection{Vitest} Vite is a frontend build tool used for the BI-DBS frontend. Vitest is a unit test framework built on top of Vite. It is a suitable tool for implementing tests in the project like the BI-DBS frontend which uses Vite. Vitest cares a lot about performance and speed, which makes it a good choice for tests that will be a part of CI pipeline. \cite{vitest}
 
 \subsection{Tests} The authorization module is composed of four main services which I have implemented for authentication and authorization processes including additional features like a refreshing of token and logging out. Therefore I have created unit tests for the functionalities of those services.\\
 

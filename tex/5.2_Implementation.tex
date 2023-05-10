@@ -1,4 +1,4 @@
-\section{Implementation} Second step of adopting the automation practices is setting up the processes using chosen tools. The implementation goal is to pro
+\section{Implementation} Second step of adopting the automation practices is setting up the processes using chosen tools. The implementation goal is to pro 
 
 
 \subsection{Containerization}  I have adopted the containerization using Docker for a use in CI/CD pipeline. The Dockerfile simply contains the instruction for building a Docker images. It composed of specific commands which tell how to build the image. A Docker image is a read-only file containing a set of instructions. When these instructions are executed, a Docker container is created. 
@@ -19,7 +19,7 @@ COPY --from=build /app/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
 \end{lstlisting}
 
-\noindent Dockefile showed on listing 5.1 contains installing dependencies on the fifth row and application bundling on the six's row using Yarn and also adding Nginx configuration from the \texttt{nginx.conf} file on the last row, which defines parameters like hostname, listen port and others.
+\noindent Dockerfile showed on listing 5.1 contains installing dependencies on the fifth row and application bundling on the six's row using Yarn and also adding Nginx configuration from the \texttt{nginx.conf} file on the last row, which defines parameters like hostname, listen port and others.
 
 
 

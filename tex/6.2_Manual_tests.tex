@@ -1,19 +1,32 @@
-\section{Manual testing} I have prepared a scenario for manual testing of all implemented features by the developers and also the group of users of the application. 
+\section{Manual testing} I have asked four people to do the manual user acceptance tests of the functionalities I have implemented. The implementation does not contain many UI components, but is focused on the proper functioning. As it was very important for me to make sure I have got tested all the features I have offered each tester a scenario show  to follow I have prepared a scenario, which is shown in table 6.1 for manual testing of the  implemented features. But also I gave a list of the requirements shown below, which they should also use for testing the features in random order and also estimate the look for a few UI components. Inhave also defined the roles which testers should have for each test and conditions they need to establish.  
 
-\paragraph*{Roles.} The test must be provided for each of the roles separately. \\
-The roles are admin, guarantor, teacher, and student.
+\paragraph*{Roles.} The test must be provided for the role I have assigned to the user for checking the correctness of the access control system. Each tester has one of next four roles assigned: admin, guarantor, teacher, and student. All testers have different roles assigned.
 
 \paragraph*{Conditions.} 
 \begin{itemize}
     \item  Client and Server applications are running.
-    \item  Semester import was made, the user's username exists in the database and has at least one role for the imported course.
-    \item  User must have access to the database of connections microservice to change the roles for tests.
-    \item  The expiration time of the access token is mocked for 5 minutes.
+    \item  Course was imported, the user's username exists in the database for that course and has an assigned role for the imported course.
+    \item  The expiration time of the access token is recommended to be mocked for five minutes.
 \end{itemize}
 
-\paragraph*{Test.} \
 
-\begin{table}[h]
+\paragraph*{Requirements for the application.} 
+\begin{itemize}
+    \item No access to the application for non-authorized user.
+    \item Clear and fast login procedure.
+    \item Access control responds to the role permissions.
+    \item Application allows persistent authorization across the page reload.
+    \item Application does not require repeated authorization after the access token expiration (five minutes iin a case of a mocked expiration time instructed in conditions section or sixty minutes if nit mocked).
+    \item Logout procedure includes the modal window for submitting the option to logout.
+    \item Logout process is clear and fast.
+    \item Login and logout UI components are good-looking.
+\end{itemize}
+
+\
+
+\noindent \textbf{Offered scenario.} 
+
+\begin{table}[ht]
 \begin{tabular}{|c|l|l|}
 \hline
 \multicolumn{1}{|l|}{} & Test Step:                                                                                                                                                           & Expected result:                                                                                                         \\ \hline
@@ -26,6 +39,34 @@ The roles are admin, guarantor, teacher, and student.
 7.                     & Click the logout button.                                                                                                                                             & \begin{tabular}[c]{@{}l@{}}The modal window displayed and \\ requires the submission to log out.\end{tabular}            \\ \hline
 8.                     & Submit.                                                                                                                                                              & Redirected to the login page.                                                                                            \\ \hline
 \end{tabular}
+\caption{\label{test-scenario}Scenario for manual testing.}
 \end{table}
 
-\paragraph*{Results.}
+\paragraph*{Results.} 
+
+\begin{itemize}
+    \item \emph{Tester 1. Anonymous with the admin role}
+        \begin{itemize}
+            \item \emph{Scenario:} passed
+            \item \emph{Requirements:} passed
+            \item \emph{Feedback:} "Page reload takes longer from time to time. Access control works good as well as login and logout."
+        \end{itemize}
+    \item \emph{Tester 2. Bc. Darya Litvinenka with the guarantor role}
+            \begin{itemize}
+            \item \emph{Scenario:} passed 
+            \item \emph{Requirements:} passed
+            \item \emph{Feedback:} "Everything works fine. "
+        \end{itemize}
+    \item \emph{Tester 3. Bc. Adam Vonášek with the teacher role}
+            \begin{itemize}
+            \item \emph{Scenario:} passed
+            \item \emph{Requirements:} passed
+            \item \emph{Feedback:} "I did't find any problem and would rate the experience usage as positive. The only thing I'm not sure about is the access control for my role as the application doesn't have many tabs and functionalities yet."
+        \end{itemize}
+    \item \emph{Tester 4. Anonymous with the student role}
+            \begin{itemize}
+            \item \emph{Scenario:} passed
+            \item \emph{Requirements:} passed
+            \item \emph{Feedback:} "The speed of the login was not very fast. Otherwise i didnt have a problem with anything."
+        \end{itemize}
+\end{itemize}
