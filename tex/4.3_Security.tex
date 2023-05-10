@@ -79,9 +79,9 @@ export const useUserStore = defineStore('auth', {
 \end{lstlisting}
 
 
-\noindent Pinia store is flexible and easy to use, that is an important moment because the stored information is used very often for sending requests, access control on the frontend and others.\\
+\noindent The fact that Pinia store is flexible and simple to use is important, as the stored information is frequently used for making requests, verifying accesses on the frontend and other functionalities.\\
 Pinia storage does not provide data persistence on its own, but with the use of plugins it can enable this functionality with the use of local or session storage. Surely it is not suitable for the implementation as I am trying to use as most secure ways to store data as it is possible. Therefore the users' data will be lost together with an access token after the page reloads.\\
-The BI-DBS is a SPA application, meaning that page reloads are not a part of the usual functioning of the web page. However, for the case when a user does the page reload and store resets to the default values I have implemented the silent sign-in. Silent sign-in is shortened way of the authentication and authorization process described in 4.2.5. The user does not participate in this process, the client just quickly gets the access token as the authorization server already knows the user and does not require to provide the credentials before the access token expires.
+The BI-DBS is a SPA application, meaning that page reloads are not a part of the usual functioning of the web page. However, for the case when a user does the page reload and store resets to the default values I have implemented the silent sign-in. Silent sign-in is shortened way of the authentication and authorization process described in \ref{sec425}. The user does not participate in this process, the client just quickly gets the access token as the authorization server already knows the user and does not require to provide the credentials before the access token expires.
 
 
 
